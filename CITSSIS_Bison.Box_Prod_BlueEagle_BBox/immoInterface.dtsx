@@ -1,0 +1,2339 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/16/2019 12:53:07 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="NBCITJC2"
+  DTS:CreatorName="CONTROLIT\JClemens"
+  DTS:DTSID="{AFE69776-C4EC-4397-863F-49AF556CE9F8}"
+  DTS:EnableConfig="True"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.150"
+  DTS:LocaleID="1031"
+  DTS:ObjectName="immoInterface"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="152"
+  DTS:VersionGUID="{3DEAD48E-A91C-4F37-82F8-16AC62DA3401}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Create_G_GesPathAnlegerPeriod.sql]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{AA2E9115-E73A-469B-84A0-3B90B81A4DF6}"
+      DTS:ObjectName="Create_G_GesPathAnlegerPeriod.sql">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::cfgBisPath] + "\\SSIS\\bisonbox\\SQL\\Create_G_GesPathAnlegerPeriod.sql"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="\\DBP332004\BISsql\SSIS\bisonbox\SQL\Create_G_GesPathAnlegerPeriod.sql" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[IM_Stammdaten_AttributeInh.sql]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{02d0cb81-9ff9-410c-854d-0b5e2a986e14}"
+      DTS:ObjectName="IM_Stammdaten_AttributeInh.sql">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::cfgBisPath] + "\\SSIS\\bisonbox\\SQL\\IM_Stammdaten_AttributeInh.sql"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="\\DBP332004\BISsql\SSIS\bisonbox\SQL\IM_Stammdaten_AttributeInh.sql" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Configurations>
+    <DTS:Configuration
+      DTS:ConfigurationString="&quot;BISDSYSDB&quot;;&quot;[dbo].[ssisConfigurations]&quot;;&quot;ALL&quot;;"
+      DTS:ConfigurationType="7"
+      DTS:CreationName=""
+      DTS:DTSID="{ABA9BA57-C8C6-454C-B0DD-5F18347FDCB7}"
+      DTS:ObjectName="ALL" />
+  </DTS:Configurations>
+  <DTS:LogProviders>
+    <DTS:LogProvider
+      DTS:ConfigString="BISDSYSDB"
+      DTS:CreationName="Microsoft.LogProviderSQLServer"
+      DTS:Description="Schreibt Protokolleinträge für Ereignisse in eine SQL Server-Datenbank."
+      DTS:DTSID="{0D93093B-9362-4060-9382-3D5475E742D4}"
+      DTS:ObjectName="SSIS-Protokollanbieter für SQL Server">
+      <DTS:ObjectData>
+        <InnerObject />
+      </DTS:ObjectData>
+    </DTS:LogProvider>
+  </DTS:LogProviders>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{620EB114-7A1E-434C-B976-E860FB38DC4B}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="cfgBisPath">
+      <DTS:VariableValue
+        DTS:DataType="8">\\DBP332004\BISsql</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{260EF5C9-42D2-4D53-A087-8B0C2C5FCB35}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="cfgBTLG_BACKWARDS">
+      <DTS:VariableValue
+        DTS:DataType="8">20</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{62BA91FF-D3B8-4AA0-96F7-87772BA91670}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="cfgBTLG_FORWARD">
+      <DTS:VariableValue
+        DTS:DataType="8">20</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{AAE7AE8B-7B19-4DEB-9149-66F9A31514AD}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="cfgDDB">
+      <DTS:VariableValue
+        DTS:DataType="8">BISDBOBDB</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:Description="not in use"
+      DTS:DTSID="{2F66FAFD-B424-4EF6-BA92-BBCB5D7BBC41}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="cfgDevIdent">
+      <DTS:VariableValue
+        DTS:DataType="8">PROD</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{FAA63F17-C904-4398-9E0E-E1AE0D0D7294}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="cfgIDB">
+      <DTS:VariableValue
+        DTS:DataType="8">BISIBOBDB</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C80D9EDF-3B08-4F9D-8C46-13B760F486D0}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="cfgLogDays">
+      <DTS:VariableValue
+        DTS:DataType="2">1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{53FC1D49-2DBE-4D4D-9BBC-FEEBFAF6EFA4}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="cfgSDB">
+      <DTS:VariableValue
+        DTS:DataType="8">BISDSYSDB</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3F54AA9A-2381-4E30-8087-52E99AB6ACBD}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Project::parServerName_SDB]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="cfgServerName">
+      <DTS:VariableValue
+        DTS:DataType="8">DBP332004</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{DB5DADD9-2C73-4F81-B9AA-F98AC5796A31}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Project::parServerName_SDB]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="parServerName_SDB">
+      <DTS:VariableValue
+        DTS:DataType="8">DBP332004</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{DEF4D780-D75D-4AAB-BA94-E65EC20F277F}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::cfgIDB]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="parSRCDB">
+      <DTS:VariableValue
+        DTS:DataType="8">BISIBOBDB</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D0E20359-9F99-458C-85E9-9BB4D3EFEAF9}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::cfgDDB]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="parTGTDB">
+      <DTS:VariableValue
+        DTS:DataType="8">BISDBOBDB</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+    <DTS:Property
+      DTS:EventName="Diagnostic"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="DiagnosticEx"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnError"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnExecStatusChanged"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnInformation"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPipelinePostComponentCall"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPipelinePostEndOfRowset"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPipelinePostPrimeOutput"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPipelinePreComponentCall"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPipelinePreEndOfRowset"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPipelinePrePrimeOutput"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPipelineRowsSent"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPostExecute"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPostValidate"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPreExecute"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPreValidate"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnProgress"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnQueryCancel"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnTaskFailed"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnVariableValueChanged"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnWarning"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:SelectedLogProviders>
+      <DTS:SelectedLogProvider
+        DTS:InstanceID="{0D93093B-9362-4060-9382-3D5475E742D4}" />
+    </DTS:SelectedLogProviders>
+  </DTS:LoggingOptions>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Clear SSIS log"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Task &quot;SQL ausführen&quot;"
+      DTS:DTSID="{21a2b3c3-dcfc-41ce-86da-73174c2fdc79}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Clear SSIS log"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{BBD4BD03-A345-4479-830A-04DAF13AEE7C}"
+          SQLTask:SqlStatementSource="delete from dbo.sysssislog&#xA;where executionid in &#xA;( &#xA; select distinct executionid &#xA; from dbo.sysssislog&#xA; where event = ?&#xA; and Source = 'immoInterface' &#xA; and starttime &lt; dateadd(day, -?, getdate()) &#xA;) &#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="User::cfgLogDays"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="20"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\CUSTOM executions"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{F5195CA2-C1CC-4A05-90C8-15B675513E42}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="CUSTOM executions">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\CUSTOM executions\Create main appraisal"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Hauptgutachten aus Teilgutachten erzeugen"
+          DTS:DTSID="{b2d44612-be94-4400-92f1-45d2d5e7b89d}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Create main appraisal"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{776C6DFC-903B-457E-8010-EDEF3CA338EB}"
+              SQLTask:SqlStatementSource="dbo.BIS_VKW_MainAppraisal" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\CUSTOM executions\Process investment structure"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Beteiligungsstruktur aufbereiten"
+          DTS:DTSID="{9a9552f5-19c0-4d08-a82c-f16c6bc5667d}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Process investment structure"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{776C6DFC-903B-457E-8010-EDEF3CA338EB}"
+              SQLTask:SqlStatementSource="exec dbo.BIS_GesBtlgPath @SelfAlloc=1" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\CUSTOM executions\Process investment structure (monthly)"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Beteiligungen (monatlich) aufbereiten (20 Jahre rückwirkend, 10 Jahre in die zukunft)"
+          DTS:DTSID="{5dc752f8-9f21-4b37-bb6c-335d656a2c97}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Process investment structure (monthly)"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:PropertyExpression
+            DTS:Name="SqlStatementSource">"declare @Startdate date = RTRIM(YEAR(GETDATE())-" + @[User::cfgBTLG_BACKWARDS] +") + '0101'
+,		@EndDate date = RTRIM(YEAR(DATEADD(YEAR, " + @[User::cfgBTLG_FORWARD]  + ", GETDATE()))) + '1231'; 
+
+exec dbo.BIS_GesbtlgPath_Period @Startdate, @EndDate, @SelfAlloc=1"</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{776C6DFC-903B-457E-8010-EDEF3CA338EB}"
+              SQLTask:SqlStatementSource="declare @Startdate date = RTRIM(YEAR(GETDATE())-20) + '0101'&#xA;,&#x9;&#x9;@EndDate date = RTRIM(YEAR(DATEADD(YEAR, 20, GETDATE()))) + '1231'; &#xA;&#xA;exec dbo.BIS_GesbtlgPath_Period @Startdate, @EndDate, @SelfAlloc=1" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\CUSTOM executions.PrecedenceConstraints[Constraint 6]"
+          DTS:CreationName=""
+          DTS:DTSID="{C56193E0-9679-4771-890B-40669B805D60}"
+          DTS:From="Package\CUSTOM executions\Process investment structure"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 6"
+          DTS:To="Package\CUSTOM executions\Process investment structure (monthly)" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Immo interface"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{8F757126-3E0C-4F6F-AA77-761422BA2D4E}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Immo interface">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Immo interface\TIFALLOC"
+          DTS:CreationName="STOCK:SEQUENCE"
+          DTS:Description="Sequenzcontainer"
+          DTS:DTSID="{4428A948-087F-40DC-86C4-6C432C538B0C}"
+          DTS:ExecutableType="STOCK:SEQUENCE"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="TIFALLOC">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{57078048-EE19-494B-8F5A-5B0D0C33AA76}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="objSQL">
+              <DTS:VariableValue
+                DTS:DataSubType="ManagedSerializable"
+                DTS:DataType="13">
+                <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+                  <SOAP-ENV:Body>
+                    <xsd:anyType
+                      id="ref-1"></xsd:anyType>
+                  </SOAP-ENV:Body>
+                </SOAP-ENV:Envelope>
+              </DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{8532CB2E-2C64-493F-924E-D0F163C044AB}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="varDescription">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{87EF75C9-34CA-4809-9327-C047FC4EFED1}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="varSQL">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\Immo interface\TIFALLOC\Foreach-ALLLOC Definition"
+              DTS:CreationName="STOCK:FOREACHLOOP"
+              DTS:Description="Load and execute Definition for TIFDIMID"
+              DTS:DTSID="{1B4490D0-8D8E-4498-8D3F-6AA7600BE71C}"
+              DTS:ExecutableType="STOCK:FOREACHLOOP"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Foreach-ALLLOC Definition">
+              <DTS:ForEachEnumerator
+                DTS:CreationName="Microsoft.ForEachADOEnumerator"
+                DTS:DTSID="{4EBDB492-A866-4570-8A38-3F2A737CD56D}"
+                DTS:ObjectName="{ABFE23AA-CDFA-4D80-A57C-E2A5726CB31B}">
+                <DTS:ObjectData>
+                  <FEEADO
+                    EnumType="EnumerateRowsInFirstTable"
+                    VarName="User::objSQL" />
+                </DTS:ObjectData>
+              </DTS:ForEachEnumerator>
+              <DTS:Variables />
+              <DTS:LoggingOptions
+                DTS:FilterKind="0" />
+              <DTS:Executables>
+                <DTS:Executable
+                  DTS:refId="Package\Immo interface\TIFALLOC\Foreach-ALLLOC Definition\insert TIFALLOC"
+                  DTS:CreationName="Microsoft.ExecuteSQLTask"
+                  DTS:Description="Task &quot;SQL ausführen&quot;"
+                  DTS:DTSID="{64B8ED5F-BEA6-4EDB-A325-11F3F716CA3F}"
+                  DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+                  DTS:LocaleID="-1"
+                  DTS:ObjectName="insert TIFALLOC"
+                  DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+                  DTS:ThreadHint="2">
+                  <DTS:Variables />
+                  <DTS:LoggingOptions
+                    DTS:FilterKind="0" />
+                  <DTS:ObjectData>
+                    <SQLTask:SqlTaskData
+                      SQLTask:Connection="{2DF0808A-B783-4BDE-91FA-3D18E72EF42F}"
+                      SQLTask:SqlStmtSourceType="Variable"
+                      SQLTask:SqlStatementSource="User::varSQL" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+                  </DTS:ObjectData>
+                </DTS:Executable>
+                <DTS:Executable
+                  DTS:refId="Package\Immo interface\TIFALLOC\Foreach-ALLLOC Definition\print SQL"
+                  DTS:CreationName="Microsoft.ScriptTask"
+                  DTS:Description="Skripttask"
+                  DTS:DTSID="{73c8b3c3-5dbf-41b7-8f13-b2437f516dd3}"
+                  DTS:ExecutableType="Microsoft.ScriptTask"
+                  DTS:LocaleID="-1"
+                  DTS:ObjectName="print SQL"
+                  DTS:ThreadHint="2">
+                  <DTS:Variables />
+                  <DTS:LoggingOptions
+                    DTS:FilterKind="0" />
+                  <DTS:ObjectData />
+                </DTS:Executable>
+                <DTS:Executable
+                  DTS:refId="Package\Immo interface\TIFALLOC\Foreach-ALLLOC Definition\Set SQL"
+                  DTS:CreationName="Microsoft.ScriptTask"
+                  DTS:DelayValidation="True"
+                  DTS:Description="Script Task"
+                  DTS:Disabled="True"
+                  DTS:DTSID="{f2d2258f-e723-455f-8bbc-c03217bfd3ec}"
+                  DTS:ExecutableType="Microsoft.ScriptTask"
+                  DTS:LocaleID="-1"
+                  DTS:ObjectName="Set SQL"
+                  DTS:ThreadHint="3">
+                  <DTS:Variables />
+                  <DTS:LoggingOptions
+                    DTS:FilterKind="0" />
+                  <DTS:ObjectData />
+                </DTS:Executable>
+              </DTS:Executables>
+              <DTS:PrecedenceConstraints>
+                <DTS:PrecedenceConstraint
+                  DTS:refId="Package\Immo interface\TIFALLOC\Foreach-ALLLOC Definition.PrecedenceConstraints[Einschränkung]"
+                  DTS:CreationName=""
+                  DTS:DTSID="{7C5994A8-E8F8-4DBF-A25F-071B7EE4114D}"
+                  DTS:From="Package\Immo interface\TIFALLOC\Foreach-ALLLOC Definition\insert TIFALLOC"
+                  DTS:LogicalAnd="True"
+                  DTS:ObjectName="Einschränkung"
+                  DTS:To="Package\Immo interface\TIFALLOC\Foreach-ALLLOC Definition\print SQL"
+                  DTS:Value="1" />
+              </DTS:PrecedenceConstraints>
+              <DTS:ForEachVariableMappings>
+                <DTS:ForEachVariableMapping
+                  DTS:CreationName=""
+                  DTS:DTSID="{E2C8F81A-736C-4668-A20F-D24D30D94DC0}"
+                  DTS:ObjectName="{6F552DCC-CA23-41DB-B83D-4F6A0606F486}"
+                  DTS:ValueIndex="0"
+                  DTS:VariableName="User::varDescription" />
+                <DTS:ForEachVariableMapping
+                  DTS:CreationName=""
+                  DTS:DTSID="{49855904-C876-4D3D-A3E2-C06E3AF36CA7}"
+                  DTS:ObjectName="{F9A38E67-4A6B-410A-98D1-5A2530C7AD83}"
+                  DTS:ValueIndex="1"
+                  DTS:VariableName="User::varSQL" />
+              </DTS:ForEachVariableMappings>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Immo interface\TIFALLOC\ImmoInterface ALLOC"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Task &quot;SQL ausführen&quot;"
+              DTS:DTSID="{E11064BE-A019-4667-878A-62C4221C0733}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="ImmoInterface ALLOC"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="2">
+              <DTS:Variables />
+              <DTS:LoggingOptions
+                DTS:FilterKind="0" />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{776C6DFC-903B-457E-8010-EDEF3CA338EB}"
+                  SQLTask:SqlStatementSource="SELECT Description&#xA;     , TargetDef = REPLACE(REPLACE(TargetDef,'&amp;SRCDB',?),'&amp;TGTDB',?)&#xA;FROM dbo.v_xInterface_Allocate &#xA;WHERE running = 1"
+                  SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  <SQLTask:ResultBinding
+                    SQLTask:ResultName="0"
+                    SQLTask:DtsVariableName="User::objSQL" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="0"
+                    SQLTask:DtsVariableName="User::cfgIDB"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="129"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="1"
+                    SQLTask:DtsVariableName="User::cfgDDB"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="129"
+                    SQLTask:ParameterSize="-1" />
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+          <DTS:PrecedenceConstraints>
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\Immo interface\TIFALLOC.PrecedenceConstraints[Einschränkung]"
+              DTS:CreationName=""
+              DTS:DTSID="{A47A05DC-A55A-4623-A36F-B7E42F3D15EC}"
+              DTS:From="Package\Immo interface\TIFALLOC\ImmoInterface ALLOC"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Einschränkung"
+              DTS:To="Package\Immo interface\TIFALLOC\Foreach-ALLLOC Definition" />
+          </DTS:PrecedenceConstraints>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Immo interface\TIFDIMID"
+          DTS:CreationName="STOCK:SEQUENCE"
+          DTS:Description="Sequenzcontainer"
+          DTS:DTSID="{FA9DE7A6-AC7F-4825-B78D-FED07FD60314}"
+          DTS:ExecutableType="STOCK:SEQUENCE"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="TIFDIMID">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{A65D2932-7197-4265-9C69-AE130BCD89EC}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="objSQL">
+              <DTS:VariableValue
+                DTS:DataSubType="ManagedSerializable"
+                DTS:DataType="13">
+                <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+                  <SOAP-ENV:Body>
+                    <xsd:anyType
+                      id="ref-1"></xsd:anyType>
+                  </SOAP-ENV:Body>
+                </SOAP-ENV:Envelope>
+              </DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{CD07D0F6-7A5B-485D-B1FD-BDF989AF2B71}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="varDescription">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{BCE9C867-E191-49DB-990F-2482600CE31E}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="varSQL">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\Immo interface\TIFDIMID\Foreach-DIMID Definition"
+              DTS:CreationName="STOCK:FOREACHLOOP"
+              DTS:Description="Load and execute Definition for TIFDIMID"
+              DTS:DTSID="{B753E388-E779-4A3F-A423-B3A172F62443}"
+              DTS:ExecutableType="STOCK:FOREACHLOOP"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Foreach-DIMID Definition">
+              <DTS:ForEachEnumerator
+                DTS:CreationName="Microsoft.ForEachADOEnumerator"
+                DTS:DTSID="{ABFE23AA-CDFA-4D80-A57C-E2A5726CB31B}"
+                DTS:ObjectName="{ABFE23AA-CDFA-4D80-A57C-E2A5726CB31B}">
+                <DTS:ObjectData>
+                  <FEEADO
+                    EnumType="EnumerateRowsInFirstTable"
+                    VarName="User::objSQL" />
+                </DTS:ObjectData>
+              </DTS:ForEachEnumerator>
+              <DTS:Variables />
+              <DTS:LoggingOptions
+                DTS:FilterKind="0" />
+              <DTS:Executables>
+                <DTS:Executable
+                  DTS:refId="Package\Immo interface\TIFDIMID\Foreach-DIMID Definition\insert TIFDIMID"
+                  DTS:CreationName="Microsoft.ExecuteSQLTask"
+                  DTS:Description="Task &quot;SQL ausführen&quot;"
+                  DTS:DTSID="{3766A08E-9019-4B45-92B0-8BC65ED074DF}"
+                  DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+                  DTS:LocaleID="-1"
+                  DTS:ObjectName="insert TIFDIMID"
+                  DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+                  DTS:ThreadHint="1">
+                  <DTS:Variables />
+                  <DTS:LoggingOptions
+                    DTS:FilterKind="0" />
+                  <DTS:ObjectData>
+                    <SQLTask:SqlTaskData
+                      SQLTask:Connection="{2DF0808A-B783-4BDE-91FA-3D18E72EF42F}"
+                      SQLTask:SqlStmtSourceType="Variable"
+                      SQLTask:SqlStatementSource="User::varSQL" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+                  </DTS:ObjectData>
+                </DTS:Executable>
+                <DTS:Executable
+                  DTS:refId="Package\Immo interface\TIFDIMID\Foreach-DIMID Definition\print SQL"
+                  DTS:CreationName="Microsoft.ScriptTask"
+                  DTS:Description="Skripttask"
+                  DTS:DTSID="{5D54C9CD-3E78-4983-A188-21A5566AF147}"
+                  DTS:ExecutableType="Microsoft.ScriptTask"
+                  DTS:LocaleID="-1"
+                  DTS:ObjectName="print SQL"
+                  DTS:ThreadHint="1">
+                  <DTS:Variables />
+                  <DTS:LoggingOptions
+                    DTS:FilterKind="0" />
+                  <DTS:ObjectData />
+                </DTS:Executable>
+                <DTS:Executable
+                  DTS:refId="Package\Immo interface\TIFDIMID\Foreach-DIMID Definition\Set SQL"
+                  DTS:CreationName="Microsoft.ScriptTask"
+                  DTS:DelayValidation="True"
+                  DTS:Description="Script Task"
+                  DTS:Disabled="True"
+                  DTS:DTSID="{4AC9A0E0-0270-4ED0-B83F-9E6C130741A3}"
+                  DTS:ExecutableType="Microsoft.ScriptTask"
+                  DTS:LocaleID="-1"
+                  DTS:ObjectName="Set SQL"
+                  DTS:ThreadHint="0">
+                  <DTS:Variables />
+                  <DTS:LoggingOptions
+                    DTS:FilterKind="0" />
+                  <DTS:ObjectData />
+                </DTS:Executable>
+              </DTS:Executables>
+              <DTS:PrecedenceConstraints>
+                <DTS:PrecedenceConstraint
+                  DTS:refId="Package\Immo interface\TIFDIMID\Foreach-DIMID Definition.PrecedenceConstraints[Einschränkung]"
+                  DTS:CreationName=""
+                  DTS:DTSID="{52154A25-F2F0-413F-AD78-CF1348C3F41F}"
+                  DTS:From="Package\Immo interface\TIFDIMID\Foreach-DIMID Definition\insert TIFDIMID"
+                  DTS:LogicalAnd="True"
+                  DTS:ObjectName="Einschränkung"
+                  DTS:To="Package\Immo interface\TIFDIMID\Foreach-DIMID Definition\print SQL"
+                  DTS:Value="1" />
+              </DTS:PrecedenceConstraints>
+              <DTS:ForEachVariableMappings>
+                <DTS:ForEachVariableMapping
+                  DTS:CreationName=""
+                  DTS:DTSID="{1A7D6F1B-4DC8-428A-9DAF-66D92B9EBDB9}"
+                  DTS:ObjectName="{1A7D6F1B-4DC8-428A-9DAF-66D92B9EBDB9}"
+                  DTS:ValueIndex="0"
+                  DTS:VariableName="User::varDescription" />
+                <DTS:ForEachVariableMapping
+                  DTS:CreationName=""
+                  DTS:DTSID="{CEFFE7C9-103B-49B9-B504-58E71C3288F3}"
+                  DTS:ObjectName="{CEFFE7C9-103B-49B9-B504-58E71C3288F3}"
+                  DTS:ValueIndex="1"
+                  DTS:VariableName="User::varSQL" />
+              </DTS:ForEachVariableMappings>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Immo interface\TIFDIMID\ImmoInterface DIMID"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Task &quot;SQL ausführen&quot;"
+              DTS:DTSID="{E74D46F1-4C6D-4D81-8E66-597B32066FF6}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="ImmoInterface DIMID"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:LoggingOptions
+                DTS:FilterKind="0" />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{776C6DFC-903B-457E-8010-EDEF3CA338EB}"
+                  SQLTask:SqlStatementSource="SELECT Description&#xA;     , TargetDef = REPLACE(REPLACE(TargetDef,'&amp;SRCDB',?),'&amp;TGTDB',?)&#xA;FROM dbo.V_xnInterface_DIMID&#xA;WHERE running = 1 "
+                  SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  <SQLTask:ResultBinding
+                    SQLTask:ResultName="0"
+                    SQLTask:DtsVariableName="User::objSQL" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="0"
+                    SQLTask:DtsVariableName="User::cfgIDB"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="129"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="1"
+                    SQLTask:DtsVariableName="User::cfgDDB"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="129"
+                    SQLTask:ParameterSize="-1" />
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+          <DTS:PrecedenceConstraints>
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\Immo interface\TIFDIMID.PrecedenceConstraints[Einschränkung]"
+              DTS:CreationName=""
+              DTS:DTSID="{2C19B8A1-8C8B-4A89-BDE4-5D123AB781EB}"
+              DTS:From="Package\Immo interface\TIFDIMID\ImmoInterface DIMID"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Einschränkung"
+              DTS:To="Package\Immo interface\TIFDIMID\Foreach-DIMID Definition" />
+          </DTS:PrecedenceConstraints>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\POST executions (attributes)"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{68B099EF-B42B-4CB3-9DE2-76DD7B44C3AA}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="POST executions (attributes)">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\POST executions (attributes)\Attributes from options"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Attribute aus den Optionen in DIM02 übernehmen"
+          DTS:DTSID="{bec7a9ca-aaca-400e-8360-4975fb2169e2}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Attributes from options"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:PropertyExpression
+            DTS:Name="SqlStatementSource">"if object_id('temp_xlbikuendopt') is not null drop table temp_xlbikuendopt;
+DROP TABLE IF EXISTS tempdb..#temp_xlbikuendopt_anfang
+DROP TABLE IF EXISTS tempdb..#temp_xlbikuendopt_datum_ebene
+DROP TABLE IF EXISTS tempdb..#temp_xlbikuendopt_endergebnis
+GO
+
+declare @OptTyp int = (select v.lid from xlbikeyhead h join xlbikeyval v on h.lid = v.lparentid where xkeyhmc = 'Optionen Kündigungsgrund' and v.xkeyalphanr = 'O');
+
+select xvertrnr, k.*, r=ROW_NUMBER() over (partition by k.lparentid, xkoptkuendtyp order by dateadd(month, isnull(xkoptvorank, 0), xkopttermin))
+into temp_xlbikuendopt
+from xlbikuendopt k
+join xlbivertrag v on k.lparentid = v.lid
+where xkoptkuendtyp = @OptTyp
+and k.ldelete = 0
+and v.ldelete = 0
+and dateadd(month, isnull(xkoptvorank, 0), xkopttermin) &gt; getdate()
+order by k.lparentid;
+
+-- Attribute bereinigen
+update " +@[User::parTGTDB]+ ".dbo.TDIM02 set ATTR0DATE08 = null, ATTR0DATE09 = null, ATTR0CHAR05 = null
+
+-- Attribute aus erster Option
+update d2
+set ATTR0DATE08 = xkopttermin									-- Startdatum Erste Option
+,	ATTR0DATE09 = dateadd(month, xkoptzeitraum, xkopttermin)	-- Enddatum Erste Option
+from temp_xlbikuendopt opt
+join " +@[User::parTGTDB]+ ".dbo.TDIM02 d2 on opt.xvertrnr = d2.DDIM02ID
+where r=1
+
+
+/********************************************
+    Neue Version von Optionen inkl. Laufzeiten zählen
+*******************************************/
+/*
+    Ermittel fuer die Optionen, ob es fuer den Zeitraum bei der jeweiligen Option
+    sich um den Anfang von mehreren aufeinanderfolgenden gleichen Zeitraeumen handelt,
+    bspw. 3x 60 Monate aufeinanderfolgend, oder nicht und speichere das Ergebnis
+    in einer temporaeren Tabelle. Wenn ein Datensatz kein Anfang ist, so ist
+    es Teil einer Art Kette von aufeinanderfolgenden gleichen Zeitraeumen.
+*/
+SELECT lparentid
+       , xkoptzeitraum
+       , xkopttermin
+       , r
+       , CAST(
+              CASE
+                   WHEN r &gt; 1 AND LAG(xkoptzeitraum, 1, xkoptzeitraum) OVER (PARTITION BY xvertrnr ORDER BY xkopttermin) = xkoptzeitraum
+                        THEN 0
+                   ELSE 
+                        1
+               END
+             AS BIT) AS istAnfang
+       INTO #temp_xlbikuendopt_anfang
+  FROM (
+        SELECT lparentid
+               , xkoptzeitraum
+               , xkopttermin
+               , xvertrnr
+               , RANK() OVER (PARTITION BY xvertrnr ORDER BY xkopttermin) r
+          FROM temp_xlbikuendopt 
+       ) y
+
+
+/*
+    Erzeuge eine weitere temporaere Tabelle, die um eine Spalte mit einem
+    Startdatum, einer Ebene und einer Zeilennummer erweiterte Variante
+    der Tabelle #temp_xlbikuendopt_anfang ist. Erntferne danschliessend
+    die Tabelle #temp_xlbikuendopt_anfang.
+*/
+SELECT *
+       , CAST(NULL AS DATETIME) AS startDatum
+       , 1 AS ebene
+       , ROW_NUMBER() OVER (ORDER BY lparentid, xkopttermin) rnr
+ INTO #temp_xlbikuendopt_datum_ebene FROM #temp_xlbikuendopt_anfang
+
+DROP TABLE IF EXISTS #temp_xlbikuendopt_anfang
+
+/*
+    Berechne nun fuer jeden Datensatz in #temp_xlbikuendopt_datum_ebene
+    den Anfang der Kette und setze dann die Ebene. Die Ebene spiegelt
+    wieder, welches Glied in der Kette die aktuelle Option ist.
+*/
+
+DECLARE @startDatum DATETIME = NULL
+DECLARE @vorherStartDate DATETIME = NULL
+DECLARE @ebene INT = NULL
+DECLARE @rownr INT = NULL
+DECLARE @istAnfang INT = NULL
+
+DECLARE crsr CURSOR FOR SELECT xkopttermin, istAnfang, rnr FROM #temp_xlbikuendopt_datum_ebene ORDER BY rnr
+
+OPEN crsr
+
+FETCH NEXT FROM crsr INTO @startDatum, @istAnfang, @rownr
+
+IF @@FETCH_STATUS = 0
+BEGIN
+    SET @ebene = 1
+
+    -- Es existiert mindestens eine 1. Zeile
+    UPDATE #temp_xlbikuendopt_datum_ebene
+       SET startDatum = @startDatum
+           , ebene = @ebene
+     WHERE rnr = @rownr
+
+     SET @vorherStartDate = @startDatum
+
+     FETCH NEXT FROM crsr INTO @startDatum, @istAnfang, @rownr
+     WHILE @@FETCH_STATUS = 0
+     -- Es gibt mehr als eine Zeile und arbeite ab Zeile 2
+     BEGIN
+           IF @istAnfang = 1
+           BEGIN
+                 SET @vorherStartDate = @startDatum
+                 SET @ebene = 1
+           END
+           ELSE
+           BEGIN
+                 SET @startDatum = @vorherStartDate
+                 SET @ebene = @ebene + 1
+           END
+
+           UPDATE #temp_xlbikuendopt_datum_ebene
+              SET startDatum = @startDatum
+                  , ebene = @ebene
+            WHERE rnr = @rownr
+            FETCH NEXT FROM crsr INTO @startDatum, @istAnfang, @rownr   
+     END
+
+END
+
+CLOSE crsr
+DEALLOCATE crsr
+
+/*
+    Berechne das Endergebnis in der Form, dass immer die hoechste
+    Ebene der jeweiligen Ketten fuer jeden Vertrag (lparentid) gewaehlt wird
+    und speichere die relevanten Informationen dazu ab.
+*/
+SELECT lparentid
+       , xkoptzeitraum
+       , startDatum
+       , MAX(ebene) as max_ebene
+       INTO #temp_xlbikuendopt_endergebnis
+  FROM #temp_xlbikuendopt_datum_ebene
+  GROUP BY lparentid, xkoptzeitraum, startDatum
+
+/*
+    Setzen der Optionen
+*/
+UPDATE D2
+   SET ATTR0CHAR05 = (
+	                  SELECT CAST(max_ebene AS VARCHAR(10)) + 'x' + CAST(xkoptzeitraum AS VARCHAR(10)) + '; ' 
+                        FROM #temp_xlbikuendopt_endergebnis
+                       WHERE lparentid = opt.lparentid 
+                       ORDER BY startDatum
+                         FOR XML PATH('')
+                     )
+ FROM temp_xlbikuendopt opt
+      JOIN " +@[User::parTGTDB]+ ".dbo.TDIM02 d2
+           ON opt.xvertrnr = d2.DDIM02ID
+           AND opt.r = 1
+
+-- letztes Semikolon entfernen
+update " +@[User::parTGTDB]+ ".dbo.TDIM02
+set ATTR0CHAR05 = left(ATTR0CHAR05, len(rtrim(ATTR0CHAR05))-1) 
+where ATTR0CHAR05 is not null and ATTR0CHAR05 like '%x%;' and RIGHT(rtrim(ATTR0CHAR05), 1) = ';'
+
+/*
+    Entferne die temporaeren Tabelle, da diese
+    nicht weiter benoetigt werden.
+*/ 
+
+if object_id('temp_xlbikuendopt') is not null drop table temp_xlbikuendopt
+
+DROP TABLE IF EXISTS tempdb..#temp_xlbikuendopt_anfang
+DROP TABLE IF EXISTS tempdb..#temp_xlbikuendopt_datum_ebene
+DROP TABLE IF EXISTS tempdb..#temp_xlbikuendopt_endergebnis
+"</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{776C6DFC-903B-457E-8010-EDEF3CA338EB}"
+              SQLTask:SqlStatementSource="if object_id('temp_xlbikuendopt') is not null drop table temp_xlbikuendopt;&#xA;DROP TABLE IF EXISTS tempdb..#temp_xlbikuendopt_anfang&#xA;DROP TABLE IF EXISTS tempdb..#temp_xlbikuendopt_datum_ebene&#xA;DROP TABLE IF EXISTS tempdb..#temp_xlbikuendopt_endergebnis&#xA;GO&#xA;&#xA;declare @OptTyp int = (select v.lid from xlbikeyhead h join xlbikeyval v on h.lid = v.lparentid where xkeyhmc = 'Optionen Kündigungsgrund' and v.xkeyalphanr = 'O');&#xA;&#xA;select xvertrnr, k.*, r=ROW_NUMBER() over (partition by k.lparentid, xkoptkuendtyp order by dateadd(month, isnull(xkoptvorank, 0), xkopttermin))&#xA;into temp_xlbikuendopt&#xA;from xlbikuendopt k&#xA;join xlbivertrag v on k.lparentid = v.lid&#xA;where xkoptkuendtyp = @OptTyp&#xA;and k.ldelete = 0&#xA;and v.ldelete = 0&#xA;and dateadd(month, isnull(xkoptvorank, 0), xkopttermin) &gt; getdate()&#xA;order by k.lparentid;&#xA;&#xA;-- Attribute bereinigen&#xA;update BISDBOBDB.dbo.TDIM02 set ATTR0DATE08 = null, ATTR0DATE09 = null, ATTR0CHAR05 = null&#xA;&#xA;-- Attribute aus erster Option&#xA;update d2&#xA;set ATTR0DATE08 = xkopttermin&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;-- Startdatum Erste Option&#xA;,&#x9;ATTR0DATE09 = dateadd(month, xkoptzeitraum, xkopttermin)&#x9;-- Enddatum Erste Option&#xA;from temp_xlbikuendopt opt&#xA;join BISDBOBDB.dbo.TDIM02 d2 on opt.xvertrnr = d2.DDIM02ID&#xA;where r=1&#xA;&#xA;&#xA;/********************************************&#xA;    Neue Version von Optionen inkl. Laufzeiten zählen&#xA;*******************************************/&#xA;/*&#xA;    Ermittel fuer die Optionen, ob es fuer den Zeitraum bei der jeweiligen Option&#xA;    sich um den Anfang von mehreren aufeinanderfolgenden gleichen Zeitraeumen handelt,&#xA;    bspw. 3x 60 Monate aufeinanderfolgend, oder nicht und speichere das Ergebnis&#xA;    in einer temporaeren Tabelle. Wenn ein Datensatz kein Anfang ist, so ist&#xA;    es Teil einer Art Kette von aufeinanderfolgenden gleichen Zeitraeumen.&#xA;*/&#xA;SELECT lparentid&#xA;       , xkoptzeitraum&#xA;       , xkopttermin&#xA;       , r&#xA;       , CAST(&#xA;              CASE&#xA;                   WHEN r &gt; 1 AND LAG(xkoptzeitraum, 1, xkoptzeitraum) OVER (PARTITION BY xvertrnr ORDER BY xkopttermin) = xkoptzeitraum&#xA;                        THEN 0&#xA;                   ELSE &#xA;                        1&#xA;               END&#xA;             AS BIT) AS istAnfang&#xA;       INTO #temp_xlbikuendopt_anfang&#xA;  FROM (&#xA;        SELECT lparentid&#xA;               , xkoptzeitraum&#xA;               , xkopttermin&#xA;               , xvertrnr&#xA;               , RANK() OVER (PARTITION BY xvertrnr ORDER BY xkopttermin) r&#xA;          FROM temp_xlbikuendopt &#xA;       ) y&#xA;&#xA;&#xA;/*&#xA;    Erzeuge eine weitere temporaere Tabelle, die um eine Spalte mit einem&#xA;    Startdatum, einer Ebene und einer Zeilennummer erweiterte Variante&#xA;    der Tabelle #temp_xlbikuendopt_anfang ist. Erntferne danschliessend&#xA;    die Tabelle #temp_xlbikuendopt_anfang.&#xA;*/&#xA;SELECT *&#xA;       , CAST(NULL AS DATETIME) AS startDatum&#xA;       , 1 AS ebene&#xA;       , ROW_NUMBER() OVER (ORDER BY lparentid, xkopttermin) rnr&#xA; INTO #temp_xlbikuendopt_datum_ebene FROM #temp_xlbikuendopt_anfang&#xA;&#xA;DROP TABLE IF EXISTS #temp_xlbikuendopt_anfang&#xA;&#xA;/*&#xA;    Berechne nun fuer jeden Datensatz in #temp_xlbikuendopt_datum_ebene&#xA;    den Anfang der Kette und setze dann die Ebene. Die Ebene spiegelt&#xA;    wieder, welches Glied in der Kette die aktuelle Option ist.&#xA;*/&#xA;&#xA;DECLARE @startDatum DATETIME = NULL&#xA;DECLARE @vorherStartDate DATETIME = NULL&#xA;DECLARE @ebene INT = NULL&#xA;DECLARE @rownr INT = NULL&#xA;DECLARE @istAnfang INT = NULL&#xA;&#xA;DECLARE crsr CURSOR FOR SELECT xkopttermin, istAnfang, rnr FROM #temp_xlbikuendopt_datum_ebene ORDER BY rnr&#xA;&#xA;OPEN crsr&#xA;&#xA;FETCH NEXT FROM crsr INTO @startDatum, @istAnfang, @rownr&#xA;&#xA;IF @@FETCH_STATUS = 0&#xA;BEGIN&#xA;    SET @ebene = 1&#xA;&#xA;    -- Es existiert mindestens eine 1. Zeile&#xA;    UPDATE #temp_xlbikuendopt_datum_ebene&#xA;       SET startDatum = @startDatum&#xA;           , ebene = @ebene&#xA;     WHERE rnr = @rownr&#xA;&#xA;     SET @vorherStartDate = @startDatum&#xA;&#xA;     FETCH NEXT FROM crsr INTO @startDatum, @istAnfang, @rownr&#xA;     WHILE @@FETCH_STATUS = 0&#xA;     -- Es gibt mehr als eine Zeile und arbeite ab Zeile 2&#xA;     BEGIN&#xA;           IF @istAnfang = 1&#xA;           BEGIN&#xA;                 SET @vorherStartDate = @startDatum&#xA;                 SET @ebene = 1&#xA;           END&#xA;           ELSE&#xA;           BEGIN&#xA;                 SET @startDatum = @vorherStartDate&#xA;                 SET @ebene = @ebene + 1&#xA;           END&#xA;&#xA;           UPDATE #temp_xlbikuendopt_datum_ebene&#xA;              SET startDatum = @startDatum&#xA;                  , ebene = @ebene&#xA;            WHERE rnr = @rownr&#xA;            FETCH NEXT FROM crsr INTO @startDatum, @istAnfang, @rownr   &#xA;     END&#xA;&#xA;END&#xA;&#xA;CLOSE crsr&#xA;DEALLOCATE crsr&#xA;&#xA;/*&#xA;    Berechne das Endergebnis in der Form, dass immer die hoechste&#xA;    Ebene der jeweiligen Ketten fuer jeden Vertrag (lparentid) gewaehlt wird&#xA;    und speichere die relevanten Informationen dazu ab.&#xA;*/&#xA;SELECT lparentid&#xA;       , xkoptzeitraum&#xA;       , startDatum&#xA;       , MAX(ebene) as max_ebene&#xA;       INTO #temp_xlbikuendopt_endergebnis&#xA;  FROM #temp_xlbikuendopt_datum_ebene&#xA;  GROUP BY lparentid, xkoptzeitraum, startDatum&#xA;&#xA;/*&#xA;    Setzen der Optionen&#xA;*/&#xA;UPDATE D2&#xA;   SET ATTR0CHAR05 = (&#xA;&#x9;                  SELECT CAST(max_ebene AS VARCHAR(10)) + 'x' + CAST(xkoptzeitraum AS VARCHAR(10)) + '; ' &#xA;                        FROM #temp_xlbikuendopt_endergebnis&#xA;                       WHERE lparentid = opt.lparentid &#xA;                       ORDER BY startDatum&#xA;                         FOR XML PATH('')&#xA;                     )&#xA; FROM temp_xlbikuendopt opt&#xA;      JOIN BISDBOBDB.dbo.TDIM02 d2&#xA;           ON opt.xvertrnr = d2.DDIM02ID&#xA;           AND opt.r = 1&#xA;&#xA;-- letztes Semikolon entfernen&#xA;update BISDBOBDB.dbo.TDIM02&#xA;set ATTR0CHAR05 = left(ATTR0CHAR05, len(rtrim(ATTR0CHAR05))-1) &#xA;where ATTR0CHAR05 is not null and ATTR0CHAR05 like '%x%;' and RIGHT(rtrim(ATTR0CHAR05), 1) = ';'&#xA;&#xA;/*&#xA;    Entferne die temporaeren Tabelle, da diese&#xA;    nicht weiter benoetigt werden.&#xA;*/ &#xA;&#xA;if object_id('temp_xlbikuendopt') is not null drop table temp_xlbikuendopt&#xA;&#xA;DROP TABLE IF EXISTS tempdb..#temp_xlbikuendopt_anfang&#xA;DROP TABLE IF EXISTS tempdb..#temp_xlbikuendopt_datum_ebene&#xA;DROP TABLE IF EXISTS tempdb..#temp_xlbikuendopt_endergebnis&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\POST executions (attributes)\Attributes from planingdata"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Kautionsart - Attribut in DIM02 übernehmen"
+          DTS:DTSID="{e786ac23-7b40-4be6-ae58-fc2a2c964686}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Attributes from planingdata"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:PropertyExpression
+            DTS:Name="SqlStatementSource">REPLACE(
+
+"update dim set ATTRCHAR03 = Periode
+from	&amp;TGTDB.dbo.TDIMGRPTXT dim
+left join(select FlaechenNr, Periode
+          from(select distinct
+                      Periode
+                    , FlaechenNr
+                    , R=RANK() over(partition by Flaechennr order by periode)
+               from dbo.xlbibgrout bgr
+               join dbo.xlbikeyval kv on kv.lid = bgr.bgr_xPlanProzess
+               where FirstRelettingState in ('BGR_ALL', 'BGR_RENT')
+                 and kv.xkeyalphanr  = 'PP2015') x
+          where R=1) qry on dim.DDIMGRPID = qry.FlaechenNr
+where DDIMNR = 1 and DDIMGRPNR = 10
+
+update dim set ATTRCHAR04 = Periode
+from	&amp;TGTDB.dbo.TDIMGRPTXT dim
+left join(select FlaechenNr, Periode
+          from(select distinct
+                      Periode
+                    , FlaechenNr
+                    , R=RANK() over(partition by Flaechennr order by periode)
+               from dbo.xlbibgrout bgr
+               join dbo.xlbikeyval kv on kv.lid = bgr.bgr_xPlanProzess
+               where FirstRelettingState in ('BGR_ALL', 'BGR_RENT')
+                 and kv.xkeyalphanr  = 'PP2014') x
+          where R=1) qry on dim.DDIMGRPID = qry.FlaechenNr
+where DDIMNR = 1 and DDIMGRPNR = 10"
+
+
+, "&amp;TGTDB"
+
+
+, @[User::parTGTDB] 
+
+)</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{776C6DFC-903B-457E-8010-EDEF3CA338EB}"
+              SQLTask:SqlStatementSource="update dim set ATTRCHAR03 = Periode&#xA;from&#x9;BISDBOBDB.dbo.TDIMGRPTXT dim&#xA;left join(select FlaechenNr, Periode&#xA;          from(select distinct&#xA;                      Periode&#xA;                    , FlaechenNr&#xA;                    , R=RANK() over(partition by Flaechennr order by periode)&#xA;               from dbo.xlbibgrout bgr&#xA;               join dbo.xlbikeyval kv on kv.lid = bgr.bgr_xPlanProzess&#xA;               where FirstRelettingState in ('BGR_ALL', 'BGR_RENT')&#xA;                 and kv.xkeyalphanr  = 'PP2015') x&#xA;          where R=1) qry on dim.DDIMGRPID = qry.FlaechenNr&#xA;where DDIMNR = 1 and DDIMGRPNR = 10&#xA;&#xA;update dim set ATTRCHAR04 = Periode&#xA;from&#x9;BISDBOBDB.dbo.TDIMGRPTXT dim&#xA;left join(select FlaechenNr, Periode&#xA;          from(select distinct&#xA;                      Periode&#xA;                    , FlaechenNr&#xA;                    , R=RANK() over(partition by Flaechennr order by periode)&#xA;               from dbo.xlbibgrout bgr&#xA;               join dbo.xlbikeyval kv on kv.lid = bgr.bgr_xPlanProzess&#xA;               where FirstRelettingState in ('BGR_ALL', 'BGR_RENT')&#xA;                 and kv.xkeyalphanr  = 'PP2014') x&#xA;          where R=1) qry on dim.DDIMGRPID = qry.FlaechenNr&#xA;where DDIMNR = 1 and DDIMGRPNR = 10" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\POST executions (attributes)\Update date - attributes"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Datumsattribute in DIM02 auf NULL setzen, wenn nicht definiert"
+          DTS:DTSID="{3F234C62-57BE-4386-A4D6-1B60AAD418D3}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Update date - attributes"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{2DF0808A-B783-4BDE-91FA-3D18E72EF42F}"
+              SQLTask:SqlStatementSource="-- Gruppe 0 = Vertrag&#xA;update TDIM02 &#xA;set ATTR0DATE01 = nullif(ATTR0DATE01, '19000101') -- Mietbeginn&#xA;,&#x9;ATTR0DATE02 = nullif(ATTR0DATE02, '99991231') -- Mietende&#xA;,&#x9;ATTR0DATE03 = nullif(ATTR0DATE03, '99991231') -- Nächstes Vertragsende&#xA;,&#x9;ATTR0DATE04 = nullif(ATTR0DATE04, '99991231') -- Sonderkündigungsrecht&#xA;,&#x9;ATTR0DATE05 = nullif(ATTR0DATE05, '19000101') -- Optionstermin&#xA;,&#x9;ATTR0DATE06 = nullif(ATTR0DATE06, '99991231') -- Ende Festlaufzeit&#xA;,&#x9;ATTR0DATE07 = nullif(ATTR0DATE07, '19000101') -- Datum Letzte Indexanpassung&#xA;,&#x9;ATTR0DATE08 = nullif(ATTR0DATE08, '19000101') -- Startdatum Erste Option&#xA;,&#x9;ATTR0DATE09 = nullif(ATTR0DATE09, '99991231') -- Enddatum Erste Option&#xA;&#xA;-- Gruppe 10 = Mieteinheit&#xA;update TDIMGRPTXT&#xA;set ATTRDATE01 = nullif(ATTRDATE01, '19000101') -- ME-Beginn&#xA;,&#x9;ATTRDATE02 = nullif(ATTRDATE02, '99991231') -- ME-Ende&#xA;where DDIMNR = 1 &#xA;and DDIMGRPNR = 10&#xA;&#xA;-- Gruppe 30 = Objekt&#xA;update TDIMGRPTXT&#xA;set ATTRDATE01 = nullif(ATTRDATE01, '19000101') -- OBJ-Beginn&#xA;,&#x9;ATTRDATE02 = nullif(ATTRDATE02, '99991231') -- OBJ-Ende&#xA;where DDIMNR = 1 &#xA;and DDIMGRPNR = 30&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\POST executions (attributes)\Update SKR - attributes"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="SKR Attribute in DIM02 übernehmen"
+          DTS:DTSID="{f4fef10e-bc4c-4c76-940e-bf0ba46c4a7a}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Update SKR - attributes"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:PropertyExpression
+            DTS:Name="SqlStatementSource">"-- Attribute vorher leeren
+update " +@[User::parTGTDB]+ ".dbo.TDIM02 
+set ATTR0DATE10 = null	-- SKR - Termin 
+
+update uFile
+set ATTR0DATE10 = xkopttermin
+from
+(
+	select xvertrnr, xkoptvorank, xkopttermin
+	, r=ROW_NUMBER() over (PARTITION BY o.lparentid order by dateadd(month, -isnull(xkoptvorank, 0), xkopttermin))
+	from xlbikuendopt o
+	join xlbivertrag v on o.lparentid = v.lid
+	where dbo.BISGET_Keyval_Alpha(xkoptkuendtyp) = '1' -- SKR
+	and dateadd(month, -isnull(xkoptvorank, 0), xkopttermin) &gt;= getdate()
+	and o.ldelete = 0
+	and v.ldelete = 0
+) x
+join " +@[User::parTGTDB]+ ".dbo.TDIM02 uFile on x.xvertrnr = uFile.ddim02id and x.r=1
+"</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{776C6DFC-903B-457E-8010-EDEF3CA338EB}"
+              SQLTask:SqlStatementSource="-- Attribute vorher leeren&#xA;update BISDBOBDB.dbo.TDIM02 &#xA;set ATTR0DATE10 = null&#x9;-- SKR - Termin &#xA;&#xA;update uFile&#xA;set ATTR0DATE10 = xkopttermin&#xA;from&#xA;(&#xA;&#x9;select xvertrnr, xkoptvorank, xkopttermin&#xA;&#x9;, r=ROW_NUMBER() over (PARTITION BY o.lparentid order by dateadd(month, -isnull(xkoptvorank, 0), xkopttermin))&#xA;&#x9;from xlbikuendopt o&#xA;&#x9;join xlbivertrag v on o.lparentid = v.lid&#xA;&#x9;where dbo.BISGET_Keyval_Alpha(xkoptkuendtyp) = '1' -- SKR&#xA;&#x9;and dateadd(month, -isnull(xkoptvorank, 0), xkopttermin) &gt;= getdate()&#xA;&#x9;and o.ldelete = 0&#xA;&#x9;and v.ldelete = 0&#xA;) x&#xA;join BISDBOBDB.dbo.TDIM02 uFile on x.xvertrnr = uFile.ddim02id and x.r=1&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\POST executions (attributes)\Update type of deposit - attributes"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Kautionsart - Attribut in DIM02 übernehmen"
+          DTS:DTSID="{1598feee-a327-46de-bf7b-2a38fd64a781}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Update type of deposit - attributes"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:PropertyExpression
+            DTS:Name="SqlStatementSource">REPLACE(
+
+"Update TDIM02 set ATTR0CHAR06 = NULL
+
+update uFile
+set ATTR0CHAR06 = SUBSTRING(x.KautArten, 1, len(x.KautArten) - 2)
+-- select distinct DDIM02ID, SUBSTRING(x.KautArten, 1, len(x.KautArten) - 2), uFile.ATTR0CHAR06
+from &amp;SRCDB.dbo.xlbikaution k1
+CROSS APPLY
+(
+	select (select xkeyAlphanr+' '+xkeymc from &amp;SRCDB.dbo.xlbikeyval where lid = k2.xkautart) + ' / '
+	from &amp;SRCDB.dbo.xlbikaution k2
+	where k2.ldelete = 0 
+	and k1.lparentid = k2.lparentid
+	FOR XML PATH ('')
+) x (KautArten)
+join TDIM02 uFile on uFile.DDIM02ID = (select xvertrnr from &amp;SRCDB.dbo.xlbiVertrag where lid = k1.lparentid)
+where k1.ldelete = 0"
+
+, "&amp;SRCDB"
+
+, @[User::parSRCDB] 
+
+)</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{2DF0808A-B783-4BDE-91FA-3D18E72EF42F}"
+              SQLTask:SqlStatementSource="Update TDIM02 set ATTR0CHAR06 = NULL&#xA;&#xA;update uFile&#xA;set ATTR0CHAR06 = SUBSTRING(x.KautArten, 1, len(x.KautArten) - 2)&#xA;-- select distinct DDIM02ID, SUBSTRING(x.KautArten, 1, len(x.KautArten) - 2), uFile.ATTR0CHAR06&#xA;from BISIBOBDB.dbo.xlbikaution k1&#xA;CROSS APPLY&#xA;(&#xA;&#x9;select (select xkeyAlphanr+' '+xkeymc from BISIBOBDB.dbo.xlbikeyval where lid = k2.xkautart) + ' / '&#xA;&#x9;from BISIBOBDB.dbo.xlbikaution k2&#xA;&#x9;where k2.ldelete = 0 &#xA;&#x9;and k1.lparentid = k2.lparentid&#xA;&#x9;FOR XML PATH ('')&#xA;) x (KautArten)&#xA;join TDIM02 uFile on uFile.DDIM02ID = (select xvertrnr from BISIBOBDB.dbo.xlbiVertrag where lid = k1.lparentid)&#xA;where k1.ldelete = 0" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\POST executions (attributes).PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{EBC6A339-7E56-4229-941C-3923CE4F7E62}"
+          DTS:From="Package\POST executions (attributes)\Update date - attributes"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\POST executions (attributes)\Update SKR - attributes" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\POST executions (attributes).PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{BF2E00A6-88E4-4642-890D-82D953DB2AB2}"
+          DTS:From="Package\POST executions (attributes)\Update SKR - attributes"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\POST executions (attributes)\Update type of deposit - attributes" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\POST executions (attributes).PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{84AEDBDE-9C74-44E0-B2CB-4562152B4FBF}"
+          DTS:From="Package\POST executions (attributes)\Update type of deposit - attributes"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\POST executions (attributes)\Attributes from planingdata" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\POST executions (attributes).PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{EB67BD09-B05B-4321-8D39-DAC4E582E65A}"
+          DTS:From="Package\POST executions (attributes)\Attributes from planingdata"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\POST executions (attributes)\Attributes from options" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\PRE executions"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{2713B426-C48C-431B-B866-E4F3D1D04F2A}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="PRE executions">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\PRE executions\Create view for attributes"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Create the attribute - view for the immoInterface"
+          DTS:DTSID="{5efc4fde-74a0-4aab-b391-95490d92c113}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Create view for attributes"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{776C6DFC-903B-457E-8010-EDEF3CA338EB}"
+              SQLTask:SqlStatementSource="if object_id('dbo.BoBINT_DIM02') is not null exec('drop view dbo.BoBINT_DIM02')&#xA;exec('&#xA;create view [dbo].[BoBINT_DIM02] as&#xA;select &#xA;  vt.*&#xA; ,ATTRCHAR01 = convert(char(1) ,isnull(vi.lid/vi.lid,0)  )    &#x9;&#x9;&#x9;&#x9;--  Vertrag indiziert?&#xA; --SBreytman 20190322: Statt Index-ID Index-Bezeichnung&#xA; --,ATTRCHAR02 = isnull(ix.xindexnr                ,''''   )    &#x9;&#x9;&#x9;--  verwendeter Index&#xA; ,ATTRCHAR02 = isnull(ix.xindexbezeichnung,''''   )    &#x9;&#x9;&#x9;&#x9;    --  verwendeter Index&#xA; --&#xA; ,ATTRCHAR03 = isnull(ltrim(vi.xvertridxPrfArt)  ,''''   )    &#x9;&#x9;    --  Prüfart&#xA; ,ATTRCHAR04 = isnull(vt.xvertrkzmwst   ,''0''  )    &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;--  Umsatzsteuerpflicht&#xA; --SBreytman 20191206: Externe Mieternummer aus Personenattributen und Staffelmiete (Änderungsgrund) aus Sollstellungen&#xA; --SBreytman 20200326: Änderung Abruf Attribute (pivotieren)&#xA; --JoJo 20210701: Kautionsart&#xA; ,ATTRCHAR06 = isnull (Ke.xkeymc        ,''''      )                      --  Kaution HABEN &#xA; ,ATTRCHAR07 = isnull(attr.Z_PER_Sonstige_10   ,'''' )    &#x9;&#x9;&#x9;    --  externe Mieternummer&#xA; ,ATTRCHAR08 = isnull(dbo.bisget_keyval_mc(flsoll.xsollstgrund),'''')&#x9;&#x9;--  Staffelmiete&#xA; --SBreytman 20200108: A-1912-2516 Konkurrenzschutzklausel &#xA; ,ATTRCHAR09=isnull(vt.xvertrcomptiarrange,'''')&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;--  Konkurrenzschutzklausel&#xA; --&#xA; --HAlbers 20200220: Erweiterung um Standardattribute&#xA; ,ATTRCHAR18 = ISNULL(xkoptkuendtyp.xkeyalphanr       ,''''   )                --  Optionstyp&#xA; ,ATTRCHAR19 = ISNULL(Anschlussvert.xvertrstammvertrag,''''   )                --  Stammvertrag-ID Folgevertrag&#xA; --,ATTRCHAR20 = ISNULL(so.xsollstgrund,''''   ) &#x9;&#x9;&#x9;   &#x9;&#x9;&#x9;&#x9;&#x9;   --  Staffelmiete (Ja/Nein)&#xA; ,ATTRCHAR21 = ISNULL(KV_UNTERNUTZUNGSART.xkeymc,''''   ) &#x9;&#x9;&#x9;&#x9;&#x9;   --  Unternutzungsart&#xA; ,ATTRCHAR22 = ISNULL(KV_MIETERART.xkeymc,''''   ) &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   --  Mieterart&#xA; --&#xA; --SBreytman 20200326: zusätzliche Mieterbranche&#xA; ,ATTRCHAR23 = isnull(attr.Z_PER_Sonstige_30_MC   ,'''' )    &#x9;&#x9;&#x9;&#x9;&#x9;--  Mieterbranche aus Attributen&#xA;&#xA; ,ATTRCHAR24 = isnull(KV_VertBranche.xkeymc  ,'''' )   &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;--  Vertragsbranche&#xA;&#xA; ,ATTRDATE01 = isnull(vt.xvertrBeginn               ,0      )    &#x9;&#x9;&#x9;&#x9;--  Mietbeginn&#xA; ,ATTRDATE02 = isnull(vt.xvertrEnde                 ,2958463)    &#x9;&#x9;&#x9;&#x9;--  Mietende&#xA; ,ATTRDATE03 = isnull(xvertrNaechstesVertragsende,2958463)    &#x9;&#x9;&#x9;&#x9;--  Nächstes Vertragsende&#xA; ,ATTRDATE04 = isnull(xvertrSondKuendRecht       ,2958463)    &#x9;&#x9;&#x9;&#x9;--  Sonderkündigungsrecht&#xA; ,ATTRDATE05 = isnull(xkoptTermin                ,0      )    &#x9;&#x9;&#x9;&#x9;--  Optionstermin&#xA; ,ATTRDATE06 = isnull(xvertrEndeFestlaufzeit     ,2958463)    &#x9;&#x9;&#x9;&#x9;--  Ende Festlaufzeit&#xA; ,ATTRDATE07 = isnull(vi.xvertridxDatumLetzteAnp ,0      )   &#x9;&#x9;&#x9;&#x9;--  Datum letzte Indexanpassung&#xA; --SBreytman 20190307&#xA; ,ATTRDATE11 = vt.xvertrkuendmieter   &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;--  Nächstmögliches Kündigungsdatum&#xA; --&#xA; --HAlbers 20200220: Erweiterung um Standardattribute&#xA;  ,ATTRDATE19 = isnull (Anschlussvert.xvertrBeginn &#x9;,0      )   &#x9;&#x9;&#x9;&#x9;--  Mietbeginn Folgevertrag&#xA;  ,ATTRDATE20 = isnull (vi.xvertridxersteprf &#x9;&#x9;,0      )   &#x9;&#x9;&#x9;&#x9;--  Datum der ersten Prüfung&#xA;  ,ATTRDATE21 = isnull (c1.xsollstbeginn &#x9;&#x9;&#x9;,0      )   &#x9;&#x9;&#x9;&#x9;--  Letzte Mieterhöhung&#xA;  -- JoJo: 20210629&#xA;  ,ATTRDATE23 = isnull (c2.xsollstbeginn            ,0      )                   -- Nächste Mietanpassung &#xA;&#xA;&#xA;--&#xA;&#xA; ,ATTRVAL01  = isnull(vi.xvertridxSchwelle       ,0      )    &#x9;&#x9;&#x9;&#x9;--  Indexswelle&#xA; ,ATTRVAL02  = isnull(vi.xvertridxWeitergab      ,0      )    &#x9;&#x9;&#x9;&#x9;--  Indexweitergabe&#xA; ,ATTRVAL03  = isnull(vi.xvertridxPrfFrq         ,0      )    &#x9;&#x9;&#x9;&#x9;--  Index Anpassungsrhythmus&#xA; ,ATTRVAL04  = isnull(vi.xvertridxStandLetzteAnp ,0      )    &#x9;&#x9;&#x9;&#x9;--  Indexstand letzte Anpassung&#xA; ,ATTRVAL05  = isnull(ko.xkoptAnz                ,0      )    &#x9;&#x9;&#x9;&#x9;--  Anzahl Optionen&#xA; ,ATTRVAL06  = isnull(ko.xkoptZeitraum           ,0      )    &#x9;&#x9;&#x9;&#x9;--  Optionsmonate&#xA; ,ATTRVAL07  = isnull(ko.xkoptVorank             ,0      )    &#x9;&#x9;&#x9;&#x9;--  Optionsvorankündigungsfrist&#xA;  --SBreytman 20190307&#xA; ,ATTRVAL12  = isnull(vi.xvertranpmon ,0      )    &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;--  Index Anpassungsversatz&#xA; ,ATTRVAL13  = isnull(vi.xvertridxidxfreiemon ,0  &#x9;    )    &#x9;&#x9;&#x9;&#x9;--  Indexfreie Monate&#xA; --SBreytman 20190531&#xA; ,ATTRVAL14 = isnull(vt.xvertrcomptiprotect   ,0&#x9;&#x9;)    &#x9;&#x9;&#x9;&#x9;--  Konkurrenzschutz&#xA; -- JoJo: 20210629&#xA; , ATTRVAL15 = isnull (xvertrbefristet        ,0        )                   -- Vertragsbefristung&#xA; , ATTRVAL16 = isnull( KA.xkautsoll          ,0        )                   --  Kaution SOLL&#xA; , ATTRVAL17 = isnull (KA.xkauthaben         ,0        )                   --  Kaution HABEN &#xA; --&#xA;&#xA; from      (select * from dbo.xlbivertrag     where ldelete=0)vt&#xA; inner join(select * from dbo.xlbivertpartner where ldelete=0)vp on vt.lparentid    = vp.lid&#xA; left  join(select * from dbo.xlbiperadr      where ldelete=0)pe on vp.xvertPartner = pe.lid&#xA; left  join(select xkoptAnz,b.*&#xA;            from(select mlid=convert(int,substring(min(convert(char(25),case when xkoptTermin&gt;=getdate()then xkoptTermin end,121)+ltrim(convert(bigint,1E12)+lid)),27,12))&#xA;                       ,xkoptAnz      = sum(case when xkoptTermin&lt;getdate()then 0 else 1 end)&#xA;                 from dbo.xlbikuendopt&#xA;                 where ldelete=0&#xA;&#x9;&#x9;&#x9;&#x9; -- SV 17.01.2018: keine Sonderkündigungen&#xA;&#x9;&#x9;&#x9;&#x9; -- SRath 31.07.2019: keine automatischen Verlängerungen&#xA;&#x9;&#x9;&#x9;&#x9; and xkoptkuendTyp not in (select lid from dbo.fn_keyval(''Optionen Kündigungsgrund'') where xkeyalphanr in (''1'', ''T''))&#xA;                 group by lparentid&#xA;                )a&#xA;            inner join(select * from dbo.xlbikuendopt where ldelete=0) b on a.mlid=b.lid&#xA;           )ko on vt.lid=ko.lparentid&#xA; left  join(select * from dbo.xlbivertragidx where ldelete=0)vi on vt.lid=vi.lparentid&#xA; left  join(select * from dbo.xlbiidxstamm   where ldelete=0)ix on vi.xindexnr=ix.lid&#xA; --Jkroepke 20200211: Erweiterung um Standardattribute&#xA; LEFT JOIN dbo.xlbikeyval xkoptkuendtyp on ko.xkoptkuendtyp = xkoptkuendtyp.lid&#xA;&#xA; --JoJo 20210629: Erweiterung Kaution, Kautionsart &#xA;Left join &#xA;&#x9; (&#xA;&#x9; select xkautsoll,xkauthaben,xkautart,dtedit, lparentid ,row_number() over (partition by lparentid order by dtedit) as r from xlbikaution &#xA;&#x9; ) KA on KA.lparentid  = vt.lid and r = 1&#xA; Left Join  xlbikeyval KE on Ka.xkautart = KE.lid &#xA; LEFT  JOIN (SELECT xvertrbeginn, xvertrstammvertrag, xflaechennr, xISTLeer, ROW_NUMBER () over (partition by xflaechennr order by xvertrbeginn) as Rang&#xA;&#x9;&#x9;&#x9;FROM  xlbivertrag&#xA;&#x9;&#x9;&#x9;WHERE 1=1&#xA;&#x9;&#x9;&#x9;and xvertrbeginn &gt;= getdate()&#xA;&#x9;&#x9;&#x9;and xISTLeer= 0&#xA;&#x9;&#x9;&#x9;) Anschlussvert on Anschlussvert.xflaechennr=vt.xflaechennr and Rang=1&#xA;--HAlbers 20200220: Erweiterung um Standardattribute&#xA;--left join (select * from dbo.xlbiflsoll where ldelete = 0) so on vt.xflaechennr = so.lparentid&#xA;left join xlbikeyval KV_UNTERNUTZUNGSART on KV_UNTERNUTZUNGSART.lid =vt.xvertrNutzknz&#xA;left join xlbikeyval KV_MIETERART on KV_MIETERART.lid = vt.xvertrMieterArt&#xA;left join xlbikeyval KV_VertBranche on KV_VertBranche.lid = vt.xvertrBranche&#xA;cross apply (select isnull(xvertrende,''9999-12-31T23:59:59''))c0(xvertrEnde)&#xA;outer apply (select TOP(1) xsollstbeginn from dbo.xlbiflsoll s join xlbikeyval sa on s.xsollstart = sa.lid where vt.xflaechennr = s.lparentid and s.xsollstbeginn between vt.xvertrbeginn and c0.xvertrEnde and sa.xkeyalphanr = ''10'' and s.ldelete = 0 order by xsollstbeginn desc)c1(xsollstbeginn)&#xA;&#xA;-- JoJo 20210629 Erweiterung nächste Mietanpassung&#xA;outer apply (select TOP(1) xsollstbeginn from dbo.xlbiflsoll s join xlbikeyval sa on s.xsollstart = sa.lid where vt.xflaechennr = s.lparentid and s.xsollstbeginn between vt.xvertrbeginn and c0.xvertrEnde and s.xsollstbeginn &gt; GETDATE() and sa.xkeyalphanr = ''10'' and s.ldelete = 0 order by xsollstbeginn )c2(xsollstbeginn)&#xA;&#xA; --SBreytman 20191206: Externe Mieternummer aus Personenattributen&#xA; --SBreytman 20200326: Externe Mieternummer und Branche aus Personenattributen&#xA; left join&#x9;(&#xA;&#x9;&#x9;&#x9;&#x9;SELECT DISTINCT  &#xA;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;ATTRINH_lparentid&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;,Z_PER_Sonstige_10=max(Z_PER_Sonstige_10)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;,Z_PER_Sonstige_30_MC=max(Z_PER_Sonstige_30_MC)&#xA;&#xA;&#x9;&#x9;&#x9;&#x9;FROM&#xA;&#x9;&#x9;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;SELECT DISTINCT&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;Kombi_Char=ATTRGRP.xAttrGrpAlphanr+''_''+ATTR.xAttrAlphanr&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;,Kombi_KeyVal_MC=ATTRGRP.xAttrGrpAlphanr+''_''+ATTR.xAttrAlphanr+''_MC''&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;,ATTRINH_lparentid=ATTRINH.lparentid&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;,ATTRINH_xAttrChar=ATTRINH.xAttrChar&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;,ATTRINH_xAttrKeyVal_MC=KeyV.xkeymc&#xA;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;FROM&#x9;(&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;SELECT&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;row=ROW_NUMBER() OVER (PARTITION BY lparentid,xattrgrpid,xAttrID ORDER BY xAttrValidFrom DESC)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;,*&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;from xlbiAttributeInh&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;) ATTRINH&#xA;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;INNER JOIN xlbiAttribute ATTR&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;ON ATTR.lid=ATTRINH.xAttrID&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;AND ATTRINH.ldelete=0&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;AND ATTR.ldelete=0&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;and ATTR.xAttrMCkurz in&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;''Mieternummer Kunde''&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;,''Branche (SIC1987)''&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;)&#xA;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;INNER JOIN xlbiAttributeGrp ATTRGRP&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;ON ATTRGRP.lid=ATTRINH.xAttrGrpID&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;AND ATTRGRP.lid=ATTR.lparentid&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;AND ATTRGRP.xMenuID=ATTRINH.MENUID&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;AND ATTRGRP.ldelete=0&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;and ATTRGRP.xAttrGrpMC=''Sonstige''&#xA;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;LEFT JOIN xlbikeyhead KeyH&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;ON KeyH.lid=ATTR.xAttrKeyHead&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;AND KeyH.ldelete=0&#xA;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;LEFT JOIN xlbikeyval KeyV&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;ON KeyV.lid=ATTRINH.xAttrKeyVal&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;AND KeyV.ldelete=0&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;AND KeyV.lparentid=KeyH.lid&#xA;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;WHERE &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;dbo.BISGET_ImmoMenu_BaseTable(CASE WHEN MenuId &lt; 10000 THEN MenuId + 1000000 ELSE MenuId END) = ''xlbiperadr''&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;and ATTRINH.row=1&#xA;&#x9;&#x9;&#x9;&#x9;) p &#xA;&#xA;&#x9;&#x9;&#x9;&#x9;pivot&#xA;&#x9;&#x9;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;max(ATTRINH_xAttrChar) for Kombi_Char in (Z_PER_Sonstige_10)&#xA;&#x9;&#x9;&#x9;&#x9;) as pvt&#xA;&#xA;&#x9;&#x9;&#x9;&#x9;pivot&#xA;&#x9;&#x9;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;max(ATTRINH_xAttrKeyVal_MC) for Kombi_KeyVal_mc in (Z_PER_Sonstige_30_MC)&#xA;&#x9;&#x9;&#x9;&#x9;) as pvt2&#xA;&#xA;&#x9;&#x9;&#x9;&#x9;group by ATTRINH_lparentid&#xA;&#x9;&#x9;&#x9;) attr &#xA;on attr.ATTRINH_lparentid=pe.lid &#xA;--&#xA;&#xA;--SBreytman 20191206: Staffelmiete (Änderungsgrund) aus Sollstellungen&#xA;left join&#x9;(&#xA;&#x9;&#x9;&#x9;&#x9;select  &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;row=ROW_NUMBER() over (partition by lparentid order by xsollstbeginn desc),&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;*&#xA;&#x9;&#x9;&#x9;&#x9;from &#xA;&#x9;&#x9;&#x9;&#x9;dbo.xlbiflsoll&#xA;&#x9;&#x9;&#x9;&#x9;where ldelete=0&#xA;&#x9;&#x9;&#x9;&#x9;and xsollstart in (&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;select &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;KeyV.lid &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;from BISIBOBDB.dbo.xlbikeyval KeyV&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;inner join BISIBOBDB.dbo.xlbikeyhead KeyH&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;on KeyV.lparentid=KeyH.lid&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;and KeyV.xkeymc=''Nettokaltmiete''&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;and KeyH.xkeyhmc=''Sollstellungsarten''&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;and KeyV.ldelete=0&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;and KeyH.ldelete=0&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;)&#xA;&#x9;&#x9;&#x9;&#x9;and  xsollstbeginn&lt;=getdate()&#xA;&#xA;&#x9;&#x9;&#x9;) flsoll&#xA;on flsoll.lparentid=vt.xflaechennr&#xA;and flsoll.row=1&#xA;and flsoll.xsollstbeginn&gt;=vt.xvertrbeginn&#xA;and convert(char(8),flsoll.xsollstbeginn,112)&lt;=isnull(convert(char(8),vt.xvertrende,112),''29991231'')&#xA;and xsollstgrund in (&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;select &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;KeyV.lid &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;from BISIBOBDB.dbo.xlbikeyval KeyV&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;inner join BISIBOBDB.dbo.xlbikeyhead KeyH&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;on KeyV.lparentid=KeyH.lid&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;and KeyV.xkeymc like ''%Staffelmiete%''&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;and KeyH.xkeyhmc=''Sollstellungsänderungsgrund''&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;and KeyV.ldelete=0&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;and KeyH.ldelete=0&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;)&#xA;')&#xA;&#xA;&#xA;--  Sicht für Wirtschaftseinheit mit Attributen&#xA;if object_id('dbo.BoBINT_DIM02GRP30') is not null exec('drop view dbo.BoBINT_DIM02GRP30')&#xA;exec('&#xA;create view dbo.BoBINT_DIM02GRP30 as&#xA;select o.*&#xA;     , ATTRCHAR05 = isnull(p1.xpername + case when nullif(p1.xpervorname,'''') is not null then '', '' else '''' end + isnull(p1.xpervorname,'''') ,'''') --  Propertymanager (Firma)&#xA;     , ATTRCHAR06 = isnull(p2.xpername + case when nullif(p2.xpervorname,'''') is not null then '', '' else '''' end + isnull(p2.xpervorname,'''') ,'''') --  Assetmanager (Person)&#xA;/****************************************************&#xA;CH-2001-0086 Objektattribute Zuständigkeiten anpassen&#xA;20200206 SBreymtan&#xA;****************************************************/&#xA;     , ATTRCHAR07 = isnull(p3.xpername + case when nullif(p3.xpervorname,'''') is not null then '', '' else '''' end + isnull(p3.xpervorname,'''') ,'''') --  Technischer Property Manager&#xA;&#x9; -- *not in use*&#xA;/****************************************************/&#xA;     , ATTRCHAR10 = (SELECT xkeyalphanr FROM.dbo.xlbikeyval where o.xobjwaehrung=lid and ldelete=0)   &#x9;--  Währung&#xA;&#x9; , ATTRCHAR04 = isnull((select xobjexnummer from xlbiObjExtern where lid = o.xobjnrextern), '''')&#xA;/****************************************************&#xA;CH-2001-0086 Objektattribute Zuständigkeiten anpassen&#xA;20200206 SBreymtan&#xA;****************************************************/&#xA;&#x9; , ATTRCHAR36 = isnull(p3.xpername + case when nullif(p3.xpervorname,'''') is not null then '', '' else '''' end + isnull(p3.xpervorname,'''') ,'''') --  *not in use* Technischer Property Manager&#xA;&#x9; , ATTRCHAR37 = isnull(p4.xpername + case when nullif(p4.xpervorname,'''') is not null then '', '' else '''' end + isnull(p4.xpervorname,'''') ,'''') --  kaufm.Property Manager&#xA;&#x9; , ATTRCHAR38 = isnull(p5.xpername + case when nullif(p5.xpervorname,'''') is not null then '', '' else '''' end + isnull(p5.xpervorname,'''') ,'''') --  Objektbuchhalter&#xA;&#x9; , ATTRCHAR39 = isnull(p6.xpername + case when nullif(p6.xpervorname,'''') is not null then '', '' else '''' end + isnull(p6.xpervorname,'''') ,'''') --  Vermietungsmanager&#xA;&#x9; , ATTRCHAR40 = isnull(p7.xpername + case when nullif(p7.xpervorname,'''') is not null then '', '' else '''' end + isnull(p7.xpervorname,'''') ,'''') --  TL Property Management&#xA;&#x9; , ATTRCHAR41 = isnull(p8.xpername + case when nullif(p8.xpervorname,'''') is not null then '', '' else '''' end + isnull(p8.xpervorname,'''') ,'''') --  TL Asset Management&#xA;&#x9; , ATTRCHAR42 = isnull(p9.xpername + case when nullif(p9.xpervorname,'''') is not null then '', '' else '''' end + isnull(p9.xpervorname,'''') ,'''') --  Asset Manager (Firma)&#xA;&#xA;&#x9; , ATTRCHAR45 = isnull(p10.xpername + case when nullif(p10.xpervorname,'''') is not null then '', '' else '''' end + isnull(p10.xpervorname,'''') ,'''') -- Facility Manager&#xA;/****************************************************/&#xA; from    (select * from dbo.xlbiobjekte where ldelete=0)o&#xA;/****************************************************&#xA;CH-2001-0086 Objektattribute Zuständigkeiten anpassen&#xA;20200206 SBreymtan&#xA;****************************************************/&#xA;--left join(select * from dbo.xlbiPeradr  where ldelete=0)p1 on p1.lid=o.xobjBetreuerlbi&#xA;left join(select * from dbo.xlbiPeradr  where ldelete=0)p1 on p1.lid=o.xobjpmcompany&#xA;/****************************************************/&#xA;-- SV 07.05.2021: xobjamcompany wird durch xobjBetreuerek ersetzt&#xA;-- SV 17.04.2020: xobjBetreuerek wird durch xobjamcompany ersetzt&#xA;left join(select * from dbo.xlbiPeradr  where ldelete=0)p2 on p2.lid=o.xobjBetreuerek&#xA;--left join(select * from dbo.xlbiPeradr  where ldelete=0)p2 on p2.lid=o.xobjamcompany&#xA;/****************************************************&#xA;CH-2001-0086 Objektattribute Zuständigkeiten anpassen&#xA;20200206 SBreymtan&#xA;****************************************************/&#xA;-- left join(select * from dbo.xlbiPeradr  where ldelete=0)p3 on p3.lid=o.xobjTechniker es gibt keinen techn.Assetmanager&#xA;left join(select * from dbo.xlbiPeradr  where ldelete=0)p3 on p3.lid=o.xobjtechnicalpm&#xA;left join(select * from dbo.xlbiPeradr  where ldelete=0)p4 on p4.lid=o.xobjcommercialpm&#xA;left join(select * from dbo.xlbiPeradr  where ldelete=0)p5 on p5.lid=o.xobjaccoutant&#xA;left join(select * from dbo.xlbiPeradr  where ldelete=0)p6 on p6.lid=o.xobjlettingmanager&#xA;left join(select * from dbo.xlbiPeradr  where ldelete=0)p7 on p7.lid=o.xobjpmhead&#xA;left join(select * from dbo.xlbiPeradr  where ldelete=0)p8 on p8.lid=o.xobjamhead&#xA;left join(select * from dbo.xlbiPeradr  where ldelete=0)p9 on p9.lid=o.xobjamcompany&#xA;left join(select * from dbo.xlbiPeradr  where ldelete=0)p10 on p10.lid=o.xobjFMCompany&#xA;/****************************************************/&#xA;')&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\PRE executions\Fill the days into TIFDIMID"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Fill the days 1 - 31 into the dimension 7"
+          DTS:DTSID="{232064da-cb21-4905-afc7-0f47221e9360}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Fill the days into TIFDIMID"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{2DF0808A-B783-4BDE-91FA-3D18E72EF42F}"
+              SQLTask:SqlStatementSource="declare @i as int &#xA;set @i = 1 &#xA;while @i &lt; 32 begin &#xA;&#x9;insert into dbo.TIFDIMID (DIMNR, DIMGRP, DIMID,DIMMC, INSERTED) &#xA;&#x9;select 6,0,CONVERT(varchar(2),@i), CONVERT(varchar(2),@i),GETDATE() &#x9;&#xA;set @i = @i + 1  &#xA;end &#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\PRE executions\Fill the Grp30 into TIFDIMID"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Fill the group30 - elements into the dimension 7"
+          DTS:DTSID="{53a191c7-f806-41b3-87fc-6b7b32e9809e}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Fill the Grp30 into TIFDIMID"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{2DF0808A-B783-4BDE-91FA-3D18E72EF42F}"
+              SQLTask:SqlStatementSource="insert into dbo.TIFDIMID (DIMNR, DIMGRP, DIMID,DIMMC,DIMTX1, INSERTED) &#xA;select distinct 6,0, DIMID = DDIM02ID, DIMMC = DDIM02MC, DIMTXT1 = DDIM02TX1, getdate() from TDIM02&#xA;where DDIM02ID in (select DDIM02GRP30 from Tdim02grp&#xA;where DDIM02GRP30 is not null)&#xA;&#xA;&#xA;INSERT INTO dbo.TIFALLOC (DIMNR, FROMGRP, FROMID, TOGRP, TOID, INSERTED)&#xA;select distinct 6,0, FROMID = DDIM02ID, TOGRP = 20, TOID = 1, getdate() from TDIM02&#xA;where DDIM02ID in (select DDIM02GRP30 from Tdim02grp&#xA;where DDIM02GRP30 is not null)&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\PRE executions\Prepare TARGET"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="clean interface tables"
+          DTS:DTSID="{C9213CFE-7BB2-4477-822C-E50AAF70A0ED}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Prepare TARGET"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{2DF0808A-B783-4BDE-91FA-3D18E72EF42F}"
+              SQLTask:SqlStatementSource="Truncate Table xAllOCerr&#xA;Truncate table xDIMerr&#xA;Truncate Table xfakterr&#xA;Truncate table TIFALLOC&#xA;Truncate Table TIFDIMID " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\PRE executions\Prepare variable group"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Vorbereitung VarGrp Anleger"
+          DTS:DTSID="{814edcdc-c530-4fb6-9fc5-8ba0892e8023}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Prepare variable group"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{776C6DFC-903B-457E-8010-EDEF3CA338EB}"
+              SQLTask:SqlStmtSourceType="FileConnection"
+              SQLTask:SqlStatementSource="Create_G_GesPathAnlegerPeriod.sql" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\PRE executions.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{1EA3C0FC-7FE8-4B0C-ACCD-7F3B3CCE7E1F}"
+          DTS:From="Package\PRE executions\Prepare TARGET"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\PRE executions\Create view for attributes" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\PRE executions.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{71837EA4-CF8F-4DC7-A30B-D9A34B6AC25A}"
+          DTS:From="Package\PRE executions\Create view for attributes"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\PRE executions\Fill the days into TIFDIMID" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\PRE executions.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{2FB98B7A-11EA-4824-B4E0-34171F9FC0AF}"
+          DTS:From="Package\PRE executions\Fill the days into TIFDIMID"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\PRE executions\Fill the Grp30 into TIFDIMID" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\PRE executions.PrecedenceConstraints[Constraint 5]"
+          DTS:CreationName=""
+          DTS:DTSID="{E6A68324-35B2-4001-82E7-DFEE5E59A315}"
+          DTS:From="Package\PRE executions\Prepare variable group"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 5"
+          DTS:To="Package\PRE executions\Prepare TARGET" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL BIS_FILLID"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Stammdaten update"
+      DTS:DTSID="{864F79BC-99C9-4E30-868A-D7E54C5EF398}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL BIS_FILLID"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{2DF0808A-B783-4BDE-91FA-3D18E72EF42F}"
+          SQLTask:SqlStatementSource="EXEC dbo.BIS_iffillid&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{9AF44A8C-834A-4A7D-A612-C2DDFCDEF08D}"
+      DTS:From="Package\PRE executions"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Immo interface" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{0E2DA65C-C8BC-4B21-AEF9-FCC9571C8C3A}"
+      DTS:From="Package\Immo interface"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\SQL BIS_FILLID" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{0DAE6907-5B57-4968-9F54-50C540CA7349}"
+      DTS:From="Package\SQL BIS_FILLID"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\POST executions (attributes)" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{2EE19795-6186-4348-9614-321F1328A284}"
+      DTS:From="Package\CUSTOM executions"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\PRE executions" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Einschränkung]"
+      DTS:CreationName=""
+      DTS:DTSID="{A17D2D02-3210-4B54-99F9-50E10ED54A87}"
+      DTS:From="Package\Clear SSIS log"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Einschränkung"
+      DTS:To="Package\CUSTOM executions" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Dieser CDATA-Abschnitt enthält die Layoutinformationen des Pakets, z.B. Informationen wie X-/Y-Koordinaten, Breite und Höhe.-->
+<!--Wenn Sie diesen Abschnitt manuell ändern und Ihnen ein Fehler unterläuft, können Sie ihn löschen. -->
+<!--Das Paket kann zwar weiterhin normal geladen werden, aber frühere Layoutinformationen gehen verloren, und die Elemente auf der Entwurfsoberfläche werden vom Designer automatisch neu angeordnet.-->
+<Objects
+  Version="8">
+  <!--Jeder darunter liegende Knoten enthält Eigenschaften, die sich nicht auf das Laufzeitverhalten auswirken.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="194,42"
+          Id="Package\Clear SSIS log"
+          TopLeft="139.5,352.5" />
+        <NodeLayout
+          Size="206.666666666667,42"
+          Id="Package\CUSTOM executions\Create main appraisal"
+          TopLeft="9.3749993635962,188.883334336777" />
+        <NodeLayout
+          Size="214,42"
+          Id="Package\CUSTOM executions\Process investment structure"
+          TopLeft="5.5,31.8749959610403" />
+        <NodeLayout
+          Size="213.333333333334,42"
+          Id="Package\CUSTOM executions\Process investment structure (monthly)"
+          TopLeft="5.5,114.658324881544" />
+        <EdgeLayout
+          Id="Package\CUSTOM executions.PrecedenceConstraints[Constraint 6]"
+          TopLeft="112,74.541662627707">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,40.1166622538366"
+              Start="0,0"
+              End="0,32.6166622538366">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.6166622538366" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="238,274"
+          Size="238,317.333333333334"
+          Id="Package\CUSTOM executions"
+          TopLeft="389.874999301508,352.47303293352" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Immo interface\TIFALLOC\Foreach-ALLLOC Definition\insert TIFALLOC"
+          TopLeft="32,111" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Immo interface\TIFALLOC\Foreach-ALLLOC Definition\print SQL"
+          TopLeft="32,202" />
+        <NodeLayout
+          Size="154,42.6666666666667"
+          Id="Package\Immo interface\TIFALLOC\Foreach-ALLLOC Definition\Set SQL"
+          TopLeft="32,27.5833280449114" />
+        <EdgeLayout
+          Id="Package\Immo interface\TIFALLOC\Foreach-ALLLOC Definition.PrecedenceConstraints[Einschränkung]"
+          TopLeft="109,153">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,49"
+              Start="0,0"
+              End="0,41.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-14.20869140625,15.8876953125,28.4173828125,9.724609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="228,281.333333333334"
+          Size="228,324"
+          Id="Package\Immo interface\TIFALLOC\Foreach-ALLLOC Definition"
+          TopLeft="15.5,92" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\Immo interface\TIFALLOC\ImmoInterface ALLOC"
+          TopLeft="33,13" />
+        <EdgeLayout
+          Id="Package\Immo interface\TIFALLOC.PrecedenceConstraints[Einschränkung]"
+          TopLeft="127.25,55">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,37"
+              Start="0,0"
+              End="0,29.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="254,446.666666666667"
+          Size="254,490"
+          Id="Package\Immo interface\TIFALLOC"
+          TopLeft="295.5,29.6999951416254" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Immo interface\TIFDIMID\Foreach-DIMID Definition\insert TIFDIMID"
+          TopLeft="34,107" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Immo interface\TIFDIMID\Foreach-DIMID Definition\print SQL"
+          TopLeft="34,198" />
+        <NodeLayout
+          Size="154,42.6666666666667"
+          Id="Package\Immo interface\TIFDIMID\Foreach-DIMID Definition\Set SQL"
+          TopLeft="34,23.7083278608819" />
+        <EdgeLayout
+          Id="Package\Immo interface\TIFDIMID\Foreach-DIMID Definition.PrecedenceConstraints[Einschränkung]"
+          TopLeft="111,149">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,49"
+              Start="0,0"
+              End="0,41.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-14.20869140625,15.8876953125,28.4173828125,9.724609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="216,282.666666666667"
+          Size="216,326"
+          Id="Package\Immo interface\TIFDIMID\Foreach-DIMID Definition"
+          TopLeft="19.5,92" />
+        <NodeLayout
+          Size="182,42"
+          Id="Package\Immo interface\TIFDIMID\ImmoInterface DIMID"
+          TopLeft="33,15" />
+        <EdgeLayout
+          Id="Package\Immo interface\TIFDIMID.PrecedenceConstraints[Einschränkung]"
+          TopLeft="125.75,57">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,35"
+              Start="0,0"
+              End="0,27.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="254,446.666666666667"
+          Size="254,490"
+          Id="Package\Immo interface\TIFDIMID"
+          TopLeft="15.5,28.6999951416254" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="566,550"
+          Size="566,593.333333333334"
+          Id="Package\Immo interface"
+          TopLeft="1065.14582251292,352.47303293352" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\POST executions (attributes)\Attributes from options"
+          TopLeft="21.7625000388051,346.999993103743" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\POST executions (attributes)\Attributes from planingdata"
+          TopLeft="21.7625000388051,264.333326437076" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\POST executions (attributes)\Update date - attributes"
+          TopLeft="21.7625000388051,17.722222222222" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\POST executions (attributes)\Update SKR - attributes"
+          TopLeft="21.7625000388052,101.388888888889" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\POST executions (attributes)\Update type of deposit - attributes"
+          TopLeft="21.7625000388051,179.666659770409" />
+        <EdgeLayout
+          Id="Package\POST executions (attributes).PrecedenceConstraints[Constraint]"
+          TopLeft="113.762500038805,59.722222222222">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,41.666666666667"
+              Start="0,0"
+              End="0,34.166666666667">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.166666666667" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\POST executions (attributes).PrecedenceConstraints[Constraint 1]"
+          TopLeft="113.762500038805,143.388888888889">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,36.27777088152"
+              Start="0,0"
+              End="0,28.77777088152">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.77777088152" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\POST executions (attributes).PrecedenceConstraints[Constraint 2]"
+          TopLeft="113.762500038805,221.666659770409">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,42.666666666667"
+              Start="0,0"
+              End="0,35.166666666667">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.166666666667" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\POST executions (attributes).PrecedenceConstraints[Constraint 3]"
+          TopLeft="113.762500038805,306.333326437076">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,40.666666666667"
+              Start="0,0"
+              End="0,33.166666666667">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.166666666667" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="234.666666666667,470.666666666667"
+          Size="234.666666666667,514"
+          Id="Package\POST executions (attributes)"
+          TopLeft="1886.89581120666,352.47303293352" />
+        <NodeLayout
+          Size="214,42"
+          Id="Package\PRE executions\Create view for attributes"
+          TopLeft="36,200.733339772423" />
+        <NodeLayout
+          Size="214,42"
+          Id="Package\PRE executions\Fill the days into TIFDIMID"
+          TopLeft="36,292.033338354428" />
+        <NodeLayout
+          Size="214,42"
+          Id="Package\PRE executions\Fill the Grp30 into TIFDIMID"
+          TopLeft="36,383.766666077772" />
+        <NodeLayout
+          Size="214,42"
+          Id="Package\PRE executions\Prepare TARGET"
+          TopLeft="36,109.5" />
+        <NodeLayout
+          Size="214,42"
+          Id="Package\PRE executions\Prepare variable group"
+          TopLeft="36,20.2083355707428" />
+        <EdgeLayout
+          Id="Package\PRE executions.PrecedenceConstraints[Constraint]"
+          TopLeft="143,151.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,49.2333397724231"
+              Start="0,0"
+              End="0,41.7333397724231">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.7333397724231" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\PRE executions.PrecedenceConstraints[Constraint 1]"
+          TopLeft="143,242.733339772423">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,49.2999985820049"
+              Start="0,0"
+              End="0,41.7999985820049">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.7999985820049" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\PRE executions.PrecedenceConstraints[Constraint 2]"
+          TopLeft="143,334.033338354428">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,49.733327723344"
+              Start="0,0"
+              End="0,42.233327723344">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.233327723344" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\PRE executions.PrecedenceConstraints[Constraint 5]"
+          TopLeft="143,62.2083355707428">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,47.2916644292572"
+              Start="0,0"
+              End="0,39.7916644292572">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.7916644292572" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="286.666666666667,484"
+          Size="286.666666666667,526.666666666667"
+          Id="Package\PRE executions"
+          TopLeft="705.583328571171,352.47303293352" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\SQL BIS_FILLID"
+          TopLeft="1686.74999754752,352.47303293352" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="992.583328571171,615.97303293352">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="72.5624939417489,33"
+              Start="0,0"
+              End="65.0624939417489,33">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="32.2812469708745,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="32.2812469708745,0"
+                    Point2="36.2812469708745,0"
+                    Point3="36.2812469708745,4" />
+                  <mssgle:LineSegment
+                    End="36.2812469708745,29" />
+                  <mssgle:CubicBezierSegment
+                    Point1="36.2812469708745,29"
+                    Point2="36.2812469708745,33"
+                    Point3="40.2812469708745,33" />
+                  <mssgle:LineSegment
+                    End="65.0624939417489,33" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="1631.14582251292,648.97303293352">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="55.6041750346001,-275.5"
+              Start="0,0"
+              End="48.1041750346001,-275.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="23.8020875173,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="23.8020875173,0"
+                    Point2="27.8020875173,0"
+                    Point3="27.8020875173,-4" />
+                  <mssgle:LineSegment
+                    End="27.8020875173,-271.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="27.8020875173,-271.5"
+                    Point2="27.8020875173,-275.5"
+                    Point3="31.8020875173,-275.5" />
+                  <mssgle:LineSegment
+                    End="48.1041750346001,-275.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="1840.74999754752,373.47303293352">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="46.14581365914,236"
+              Start="0,0"
+              End="38.64581365914,236">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="19.07290682957,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="19.07290682957,0"
+                    Point2="23.07290682957,0"
+                    Point3="23.07290682957,4" />
+                  <mssgle:LineSegment
+                    End="23.07290682957,232" />
+                  <mssgle:CubicBezierSegment
+                    Point1="23.07290682957,232"
+                    Point2="23.07290682957,236"
+                    Point3="27.07290682957,236" />
+                  <mssgle:LineSegment
+                    End="38.64581365914,236" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="627.874999301508,510.97303293352">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="77.708329269663,105"
+              Start="0,0"
+              End="70.208329269663,105">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="34.8541646348315,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="34.8541646348315,0"
+                    Point2="38.8541646348315,0"
+                    Point3="38.8541646348315,4" />
+                  <mssgle:LineSegment
+                    End="38.8541646348315,101" />
+                  <mssgle:CubicBezierSegment
+                    Point1="38.8541646348315,101"
+                    Point2="38.8541646348315,105"
+                    Point3="42.8541646348315,105" />
+                  <mssgle:LineSegment
+                    End="70.208329269663,105" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung]"
+          TopLeft="333.5,373.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="56.374999301508,137.47303293352"
+              Start="0,0"
+              End="48.874999301508,137.47303293352">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="24.187499650754,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="24.187499650754,0"
+                    Point2="28.187499650754,0"
+                    Point3="28.187499650754,4" />
+                  <mssgle:LineSegment
+                    End="28.187499650754,133.47303293352" />
+                  <mssgle:CubicBezierSegment
+                    Point1="28.187499650754,133.47303293352"
+                    Point2="28.187499650754,137.47303293352"
+                    Point3="32.187499650754,137.47303293352" />
+                  <mssgle:LineSegment
+                    End="48.874999301508,137.47303293352" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

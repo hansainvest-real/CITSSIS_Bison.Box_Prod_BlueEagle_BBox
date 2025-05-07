@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.34601.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "CITSSIS_Bison.Box_Prod_BlueEagle_BBox", "CITSSIS_Bison.Box_Prod_BlueEagle_BBox\CITSSIS_Bison.Box_Prod_BlueEagle_BBox.dtproj", "{4E08F040-6BF1-4FFB-8003-B1E8918D170C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4E08F040-6BF1-4FFB-8003-B1E8918D170C}.Development|Default.ActiveCfg = Development
+		{4E08F040-6BF1-4FFB-8003-B1E8918D170C}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {53D98F87-03A8-4B30-AC1A-C77B672D5A2F}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,556 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/23/2019 11:41:14 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="IRSRDSH19"
+  DTS:CreatorName="HAMBURG\bishihvarkal"
+  DTS:DTSID="{F5BB5D6F-C9BA-4A27-9B6D-75F9816CF4FC}"
+  DTS:EnableConfig="True"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.150"
+  DTS:LocaleID="1031"
+  DTS:ObjectName="copyTables_exportDBs2importDB"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="186"
+  DTS:VersionGUID="{FFCD572A-19EB-4A6D-902B-C1BB7C14B4F2}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Configurations>
+    <DTS:Configuration
+      DTS:ConfigurationString="&quot;BISDSYSDB&quot;;&quot;[dbo].[ssisConfigurations]&quot;;&quot;ALL&quot;;"
+      DTS:ConfigurationType="7"
+      DTS:CreationName=""
+      DTS:DTSID="{3D74E6EE-C047-47DB-A7D5-78B31B5FA98C}"
+      DTS:ObjectName="ALL" />
+  </DTS:Configurations>
+  <DTS:LogProviders>
+    <DTS:LogProvider
+      DTS:ConfigString="BISDSYSDB"
+      DTS:CreationName="Microsoft.LogProviderSQLServer"
+      DTS:Description="Writes log entries for events to a SQL Server database"
+      DTS:DTSID="{43E55616-EA4A-42E4-A0E8-A54E97D27977}"
+      DTS:ObjectName="SSIS log provider for SQL Server">
+      <DTS:ObjectData>
+        <InnerObject />
+      </DTS:ObjectData>
+    </DTS:LogProvider>
+  </DTS:LogProviders>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:Description="The ident of the hub (*ALL = process all Hub's)"
+      DTS:DTSID="{D6E457A5-7A10-4E2C-9A00-471967ECB64B}"
+      DTS:ObjectName="parHubID"
+      DTS:Required="True">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">DiboLyving</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:Description="Name of the source database (exportDB)"
+      DTS:DTSID="{FBB5C541-21B6-4152-905C-606B0D0ED06A}"
+      DTS:ObjectName="parSourceDB"
+      DTS:Required="True">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">BISexportDB_DIBO2NOX</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:Description="Prefix to add to the target tables (*EMPTY = no prefix)"
+      DTS:DTSID="{6D0CD3F5-2258-4ACB-A7C6-49D0DB253482}"
+      DTS:ObjectName="parTargetTablePrefix">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">DOM_</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:Description="Type of data delivery"
+      DTS:DTSID="{CE86CE09-F8CE-4D7A-9F03-2591927F02F1}"
+      DTS:ObjectName="parTypeOfDelivery"
+      DTS:Required="True">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">Domus</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{084670C3-320C-4AF9-A9D6-C4077F4EC2D2}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="cfgBisPath">
+      <DTS:VariableValue
+        DTS:DataType="8">\\DBP332004\BISsql</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8F1EF4CA-F893-4CDF-965E-A59E4C074DD9}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="cfgDDB">
+      <DTS:VariableValue
+        DTS:DataType="8">BISDBOBDB</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4C90F2AF-58E7-46FB-A50E-52F141EB0379}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="cfgDevIdent">
+      <DTS:VariableValue
+        DTS:DataType="8">PROD</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B923F974-3816-45BD-9A92-67E6296E3179}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="cfgIDB">
+      <DTS:VariableValue
+        DTS:DataType="8">BISIBOBDB</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{1DB7C1D0-B47C-45DF-8AA8-BED0A64A7324}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="cfgIMPDB">
+      <DTS:VariableValue
+        DTS:DataType="8">BISimportDB</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7472DEC4-ACD7-4B4D-8F8D-3DDF45AFDBF7}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="cfgINTDB">
+      <DTS:VariableValue
+        DTS:DataType="8">BISINTDATA</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{783297E8-ACC2-4E6C-9347-C9F9A0E0B23C}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="cfgLogDays">
+      <DTS:VariableValue
+        DTS:DataType="3">1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{9B58F8F4-B152-4D5F-BEFD-5D54A766D4ED}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="cfgSDB">
+      <DTS:VariableValue
+        DTS:DataType="8">BISDSYSDB</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F4E8EC54-18E0-4444-BF42-2DBF161B4A06}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="cfgServerName">
+      <DTS:VariableValue
+        DTS:DataType="8">DBP332004</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B2135BCE-22CA-4095-AEA8-78CC823937CC}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="objEXPDBs">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{9435DF81-4AE5-458B-8EB3-F87D685A9C9A}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Package::parSourceDB]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="varEXPDB">
+      <DTS:VariableValue
+        DTS:DataType="8">BISexportDB_DIBO2NOX</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C87B4798-7AF6-4FC7-88D3-EC34CA48FD6F}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Package::parHubID]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="varHubID">
+      <DTS:VariableValue
+        DTS:DataType="8">DiboLyving</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{07E061AF-1224-4770-83C4-183422BD826A}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="varPrefix">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnError"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:SelectedLogProviders>
+      <DTS:SelectedLogProvider
+        DTS:InstanceID="{43E55616-EA4A-42E4-A0E8-A54E97D27977}" />
+    </DTS:SelectedLogProviders>
+  </DTS:LoggingOptions>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\add internal columns if not exists"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{890F1E27-587D-47C7-A50E-147EB085CB6D}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="add internal columns if not exists"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:PropertyExpression
+        DTS:Name="SqlStatementSource">"USE " + @[$Package::parSourceDB] + ";
+declare @sql varchar(max);
+set @sql=''
+
+-- add columns
+--------------
+select @sql = @sql 
+	+ 'if COL_LENGTH(''dbo.' + [name] + ''',''xHubID'')				is null alter table dbo.[' + [name] + ']	add xHubID varchar(50)' + ';'
+	+ 'if COL_LENGTH(''dbo.' + [name] + ''',''xPrefix'')			is null alter table dbo.[' + [name] + ']	add xPrefix varchar(50)' + ';'
+	+ 'if COL_LENGTH(''dbo.' + [name] + ''',''xTypeOfDelivery'')	is null alter table dbo.[' + [name] + ']	add xTypeOfDelivery varchar(50)' + ';'
+from sys.tables 
+where type = 'U'
+
+--print @sql;
+exec (@sql);
+
+
+set @sql=''
+-- update columns
+-----------------
+select @sql = @sql
+	+ 'update dbo.' + [name] + ' set xHubID=''" + @[$Package::parHubID] + "'' where xHubID is null or xHubID = '''''+ ';'
+	+ 'update dbo.' + [name] + ' set xTypeOfDelivery=''" + @[$Package::parTypeOfDelivery] + "'' where xTypeOfDelivery is null or xTypeOfDelivery = '''''+ ';'
+	+ 'update dbo.' + [name] + ' set xPrefix=(select xkeyalphanr from " +@[User::cfgIDB]+ ".dbo.fn_keyval(''PrefixAccounting'') where xkeyMc = ''" +@[$Package::parHubID]+" - " +@[$Package::parTypeOfDelivery]+ "'') where xPrefix is null or xPrefix = '''''+ ';'
+from sys.tables 
+where type = 'U'
+
+--print @sql;
+exec (@sql);
+"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{F9BCB5CA-22E9-48AA-9D68-C86108FE4C34}"
+          SQLTask:SqlStatementSource="USE BISexportDB_DIBO2NOX;&#xA;declare @sql varchar(max);&#xA;set @sql=''&#xA;&#xA;-- add columns&#xA;--------------&#xA;select @sql = @sql &#xA;&#x9;+ 'if COL_LENGTH(''dbo.' + [name] + ''',''xHubID'')&#x9;&#x9;&#x9;&#x9;is null alter table dbo.[' + [name] + ']&#x9;add xHubID varchar(50)' + ';'&#xA;&#x9;+ 'if COL_LENGTH(''dbo.' + [name] + ''',''xPrefix'')&#x9;&#x9;&#x9;is null alter table dbo.[' + [name] + ']&#x9;add xPrefix varchar(50)' + ';'&#xA;&#x9;+ 'if COL_LENGTH(''dbo.' + [name] + ''',''xTypeOfDelivery'')&#x9;is null alter table dbo.[' + [name] + ']&#x9;add xTypeOfDelivery varchar(50)' + ';'&#xA;from sys.tables &#xA;where type = 'U'&#xA;&#xA;--print @sql;&#xA;exec (@sql);&#xA;&#xA;&#xA;set @sql=''&#xA;-- update columns&#xA;-----------------&#xA;select @sql = @sql&#xA;&#x9;+ 'update dbo.' + [name] + ' set xHubID=''DiboLyving'' where xHubID is null or xHubID = '''''+ ';'&#xA;&#x9;+ 'update dbo.' + [name] + ' set xTypeOfDelivery=''Domus'' where xTypeOfDelivery is null or xTypeOfDelivery = '''''+ ';'&#xA;&#x9;+ 'update dbo.' + [name] + ' set xPrefix=(select xkeyalphanr from BISIBOBDB.dbo.fn_keyval(''PrefixAccounting'') where xkeyMc = ''DiboLyving - Domus'') where xPrefix is null or xPrefix = '''''+ ';'&#xA;from sys.tables &#xA;where type = 'U'&#xA;&#xA;--print @sql;&#xA;exec (@sql);&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Clear SSIS log"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Task &quot;SQL ausführen&quot;"
+      DTS:DTSID="{2D9A559C-594B-485F-A008-35D76F29917A}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Clear SSIS log"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{BBD4BD03-A345-4479-830A-04DAF13AEE7C}"
+          SQLTask:SqlStatementSource="delete from dbo.sysssislog&#xA;where executionid in &#xA;( &#xA; select distinct executionid &#xA; from dbo.sysssislog&#xA; where event = 'PackageStart' &#xA; and Source = ? &#xA; and starttime &lt; dateadd(day, -?, getdate()) &#xA;) &#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="User::cfgLogDays"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="20"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Transfer exportDB to importDB"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Task &quot;SQL ausführen&quot;"
+      DTS:DTSID="{66E41CF1-8BE7-4CDA-8E6D-EC8747582B14}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Transfer exportDB to importDB"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:PropertyExpression
+        DTS:Name="SqlStatementSource">"use " + @[$Package::parSourceDB] + ";
+go
+
+-- get the hub and table prefix
+-------------------------------
+declare @hubID varchar(50) = '" +@[$Package::parHubID]+ "'
+declare @tablePrefix varchar(50) = case when '" +@[$Package::parTargetTablePrefix]+ "' = '*EMPTY' then '' else '" +@[$Package::parTargetTablePrefix]+ "' end
+
+declare @sql varchar (max);
+
+-- create empty tables if not exists
+------------------------------------
+set @sql = '';
+
+select @sql = @sql + 'if OBJECT_ID (''BISimportDB.dbo.' + @tablePrefix + [name] +''') is null select * into BISimportDB.dbo.' + @tablePrefix + [name] + ' from dbo.'  + [name] + ' where 1=0; '
+from sys.tables 
+where type = 'U';
+
+print @sql;
+exec (@sql);
+
+
+-- clear tables
+---------------
+set @sql = '';
+
+select @sql = @sql + 'delete from BISimportDB.dbo.' + imp.[name] + ' where xHubID = ''' +@hubID+ '''; '
+from sys.tables exp
+join BISimportDB.sys.tables imp on @tablePrefix + exp.name = imp.name
+where exp.type = 'U';
+
+print @sql;
+exec (@sql);
+
+
+-- add internal columns if not exists
+-------------------------------------
+
+-- add xHubID
+set @sql = '';
+select @sql = @sql + 'if COL_LENGTH(''BISimportDB.dbo.' + imp.[name] + ''',''xHubID'') is null alter table BISimportDB.dbo.' + imp.[name] + ' add xHubID varchar(50)' + '; '
+from sys.tables exp
+join BISimportDB.sys.tables imp on @tablePrefix + exp.name = imp.name
+where exp.type = 'U';
+
+print @sql;
+exec (@sql);
+
+-- add xPrefix
+set @sql = '';
+select @sql = @sql + 'if COL_LENGTH(''BISimportDB.dbo.' + imp.[name] + ''',''xPrefix'') is null alter table BISimportDB.dbo.' + imp.[name] + ' add xPrefix varchar(50)' + '; '
+from sys.tables exp
+join BISimportDB.sys.tables imp on @tablePrefix + exp.name = imp.name
+where exp.type = 'U';
+
+--print @sql;
+exec (@sql);
+
+-- add xTypeOfDelivery
+set @sql = '';
+select @sql = @sql + 'if COL_LENGTH(''BISimportDB.dbo.' + imp.[name] + ''',''xTypeOfDelivery'') is null alter table BISimportDB.dbo.' + imp.[name] + ' add xTypeOfDelivery varchar(50)' + '; '
+from sys.tables exp
+join BISimportDB.sys.tables imp on @tablePrefix + exp.name = imp.name
+where exp.type = 'U';
+
+print @sql;
+exec (@sql);
+
+-- alle Tabellen und Spalten die es in der export und import DB gibt matchen und in temp Tabelle sichern
+--------------------------------------------------------------------------------------------------------
+if OBJECT_ID('tempdb.dbo.#columns') is not null drop table #columns
+select distinct tabName, name, is_identity
+into #columns
+from
+(
+	select distinct expTab.name as tabName, impCols.name, impCols.is_identity
+	from sys.tables expTab
+	join BISimportDB.sys.tables impTab on @tablePrefix + expTab.name = impTab.name
+	join sys.columns expCols on expTab.object_id = expCols.object_id
+	join BISimportDB.sys.columns impCols on impTab.object_id = impCols.object_id and expCols.name = impCols.name 
+	join sys.types expType on expCols.system_type_id = expType.system_type_id
+	join sys.types impType on impCols.system_type_id = impType.system_type_id
+	where expTab.type = 'U' -- user table
+	and expType.name &lt;&gt; 'timestamp' -- timestamp Datentypen können nicht verarbeitet werden
+	and impType.name &lt;&gt; 'timestamp' -- timestamp Datentypen können nicht verarbeitet werden
+) src
+
+if OBJECT_ID('tempdb.dbo.#columnsInRow') is not null drop table #columnsInRow
+select distinct cols.tabName, cols.is_identity, left(x.cols, len(x.cols) -1) as cols, r=ROW_NUMBER() over (partition by tabName, Cols order by (select null))
+into #columnsInRow
+from #columns cols
+cross apply (select '['+[name] + '],' from #columns cols2
+	where cols.tabName = cols2.tabName
+	order by cols.name for XML PATH ('')
+) x (cols)
+
+
+-- copy is_identity to all columns in table
+update ufile
+set is_identity = identityMax.is_identity
+from #columnsInRow ufile
+join (select tabName, max(cast(is_identity as int)) as is_identity from #columnsInRow group by tabName) identityMax on identityMax.tabName = ufile.tabName
+
+-- delete duplicate records
+delete dFile
+from #columnsInRow dFile
+where r &lt;&gt; 1
+
+-- fill the tables
+------------------
+set @sql = '';
+
+select @sql = @sql + 
+	case when is_identity = 1 then 'SET IDENTITY_INSERT BISimportDB.dbo.' + @tablePrefix + tabName +' '+ 'ON' else '' end	+ ';' + 
+	'insert into BISimportDB.dbo.' + @tablePrefix + tabName + '(' + cols + ') select ' + cols + ' from dbo.' + tabName		+ ';' +
+	case when is_identity = 1 then 'SET IDENTITY_INSERT BISimportDB.dbo.' + @tablePrefix + tabName +' '+ 'OFF' else '' end + ';'   
+from #columnsInRow
+
+print @sql;
+exec (@sql);
+"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{F9BCB5CA-22E9-48AA-9D68-C86108FE4C34}"
+          SQLTask:SqlStatementSource="use BISexportDB_DIBO2NOX;&#xA;go&#xA;&#xA;-- get the hub and table prefix&#xA;-------------------------------&#xA;declare @hubID varchar(50) = 'DiboLyving'&#xA;declare @tablePrefix varchar(50) = case when 'DOM_' = '*EMPTY' then '' else 'DOM_' end&#xA;&#xA;declare @sql varchar (max);&#xA;&#xA;-- create empty tables if not exists&#xA;------------------------------------&#xA;set @sql = '';&#xA;&#xA;select @sql = @sql + 'if OBJECT_ID (''BISimportDB.dbo.' + @tablePrefix + [name] +''') is null select * into BISimportDB.dbo.' + @tablePrefix + [name] + ' from dbo.'  + [name] + ' where 1=0; '&#xA;from sys.tables &#xA;where type = 'U';&#xA;&#xA;print @sql;&#xA;exec (@sql);&#xA;&#xA;&#xA;-- clear tables&#xA;---------------&#xA;set @sql = '';&#xA;&#xA;select @sql = @sql + 'delete from BISimportDB.dbo.' + imp.[name] + ' where xHubID = ''' +@hubID+ '''; '&#xA;from sys.tables exp&#xA;join BISimportDB.sys.tables imp on @tablePrefix + exp.name = imp.name&#xA;where exp.type = 'U';&#xA;&#xA;print @sql;&#xA;exec (@sql);&#xA;&#xA;&#xA;-- add internal columns if not exists&#xA;-------------------------------------&#xA;&#xA;-- add xHubID&#xA;set @sql = '';&#xA;select @sql = @sql + 'if COL_LENGTH(''BISimportDB.dbo.' + imp.[name] + ''',''xHubID'') is null alter table BISimportDB.dbo.' + imp.[name] + ' add xHubID varchar(50)' + '; '&#xA;from sys.tables exp&#xA;join BISimportDB.sys.tables imp on @tablePrefix + exp.name = imp.name&#xA;where exp.type = 'U';&#xA;&#xA;print @sql;&#xA;exec (@sql);&#xA;&#xA;-- add xPrefix&#xA;set @sql = '';&#xA;select @sql = @sql + 'if COL_LENGTH(''BISimportDB.dbo.' + imp.[name] + ''',''xPrefix'') is null alter table BISimportDB.dbo.' + imp.[name] + ' add xPrefix varchar(50)' + '; '&#xA;from sys.tables exp&#xA;join BISimportDB.sys.tables imp on @tablePrefix + exp.name = imp.name&#xA;where exp.type = 'U';&#xA;&#xA;--print @sql;&#xA;exec (@sql);&#xA;&#xA;-- add xTypeOfDelivery&#xA;set @sql = '';&#xA;select @sql = @sql + 'if COL_LENGTH(''BISimportDB.dbo.' + imp.[name] + ''',''xTypeOfDelivery'') is null alter table BISimportDB.dbo.' + imp.[name] + ' add xTypeOfDelivery varchar(50)' + '; '&#xA;from sys.tables exp&#xA;join BISimportDB.sys.tables imp on @tablePrefix + exp.name = imp.name&#xA;where exp.type = 'U';&#xA;&#xA;print @sql;&#xA;exec (@sql);&#xA;&#xA;-- alle Tabellen und Spalten die es in der export und import DB gibt matchen und in temp Tabelle sichern&#xA;--------------------------------------------------------------------------------------------------------&#xA;if OBJECT_ID('tempdb.dbo.#columns') is not null drop table #columns&#xA;select distinct tabName, name, is_identity&#xA;into #columns&#xA;from&#xA;(&#xA;&#x9;select distinct expTab.name as tabName, impCols.name, impCols.is_identity&#xA;&#x9;from sys.tables expTab&#xA;&#x9;join BISimportDB.sys.tables impTab on @tablePrefix + expTab.name = impTab.name&#xA;&#x9;join sys.columns expCols on expTab.object_id = expCols.object_id&#xA;&#x9;join BISimportDB.sys.columns impCols on impTab.object_id = impCols.object_id and expCols.name = impCols.name &#xA;&#x9;join sys.types expType on expCols.system_type_id = expType.system_type_id&#xA;&#x9;join sys.types impType on impCols.system_type_id = impType.system_type_id&#xA;&#x9;where expTab.type = 'U' -- user table&#xA;&#x9;and expType.name &lt;&gt; 'timestamp' -- timestamp Datentypen können nicht verarbeitet werden&#xA;&#x9;and impType.name &lt;&gt; 'timestamp' -- timestamp Datentypen können nicht verarbeitet werden&#xA;) src&#xA;&#xA;if OBJECT_ID('tempdb.dbo.#columnsInRow') is not null drop table #columnsInRow&#xA;select distinct cols.tabName, cols.is_identity, left(x.cols, len(x.cols) -1) as cols, r=ROW_NUMBER() over (partition by tabName, Cols order by (select null))&#xA;into #columnsInRow&#xA;from #columns cols&#xA;cross apply (select '['+[name] + '],' from #columns cols2&#xA;&#x9;where cols.tabName = cols2.tabName&#xA;&#x9;order by cols.name for XML PATH ('')&#xA;) x (cols)&#xA;&#xA;&#xA;-- copy is_identity to all columns in table&#xA;update ufile&#xA;set is_identity = identityMax.is_identity&#xA;from #columnsInRow ufile&#xA;join (select tabName, max(cast(is_identity as int)) as is_identity from #columnsInRow group by tabName) identityMax on identityMax.tabName = ufile.tabName&#xA;&#xA;-- delete duplicate records&#xA;delete dFile&#xA;from #columnsInRow dFile&#xA;where r &lt;&gt; 1&#xA;&#xA;-- fill the tables&#xA;------------------&#xA;set @sql = '';&#xA;&#xA;select @sql = @sql + &#xA;&#x9;case when is_identity = 1 then 'SET IDENTITY_INSERT BISimportDB.dbo.' + @tablePrefix + tabName +' '+ 'ON' else '' end&#x9;+ ';' + &#xA;&#x9;'insert into BISimportDB.dbo.' + @tablePrefix + tabName + '(' + cols + ') select ' + cols + ' from dbo.' + tabName&#x9;&#x9;+ ';' +&#xA;&#x9;case when is_identity = 1 then 'SET IDENTITY_INSERT BISimportDB.dbo.' + @tablePrefix + tabName +' '+ 'OFF' else '' end + ';'   &#xA;from #columnsInRow&#xA;&#xA;print @sql;&#xA;exec (@sql);&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Einschränkung]"
+      DTS:CreationName=""
+      DTS:DTSID="{32365298-2F73-4456-BC92-9ABE965AB86D}"
+      DTS:From="Package\Clear SSIS log"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Einschränkung"
+      DTS:To="Package\add internal columns if not exists" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Einschränkung 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{927EC760-F06F-4B01-B8AB-7154DD2F41BC}"
+      DTS:From="Package\add internal columns if not exists"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Einschränkung 1"
+      DTS:To="Package\Transfer exportDB to importDB" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Dieser CDATA-Abschnitt enthält die Layoutinformationen des Pakets, z.B. Informationen wie X-/Y-Koordinaten, Breite und Höhe.-->
+<!--Wenn Sie diesen Abschnitt manuell ändern und Ihnen ein Fehler unterläuft, können Sie ihn löschen. -->
+<!--Das Paket kann zwar weiterhin normal geladen werden, aber frühere Layoutinformationen gehen verloren, und die Elemente auf der Entwurfsoberfläche werden vom Designer automatisch neu angeordnet.-->
+<Objects
+  Version="8">
+  <!--Jeder darunter liegende Knoten enthält Eigenschaften, die sich nicht auf das Laufzeitverhalten auswirken.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="194,42"
+          Id="Package\add internal columns if not exists"
+          TopLeft="355.566672541982,119.335294289242" />
+        <NodeLayout
+          Size="194,42"
+          Id="Package\Clear SSIS log"
+          TopLeft="355.566672541982,17.7352942892424" />
+        <NodeLayout
+          Size="194,42"
+          Id="Package\Transfer exportDB to importDB"
+          TopLeft="355.566672541982,228.135294289242" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung]"
+          TopLeft="452.366672541982,59.3352942892424">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Einschränkung 1]"
+          TopLeft="452.366672541982,160.935294289242">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,67.1999999999999"
+              Start="0,0"
+              End="0,59.6999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,59.6999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
