@@ -12,9 +12,9 @@
   DTS:LocaleID="1031"
   DTS:ObjectName="BoBexchg_WebClient"
   DTS:PackageType="5"
-  DTS:ProtectionLevel="0"
-  DTS:VersionBuild="484"
-  DTS:VersionGUID="{15F58739-11CD-4B1F-AD97-B142FC8FB363}">
+  DTS:ProtectionLevel="2"
+  DTS:VersionBuild="485"
+  DTS:VersionGUID="{9839381E-B70A-46F3-BD7D-33A5AFD73BAB}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -149,12 +149,26 @@
             DTS:UseProxyCredentials="True"
             DTS:ProxyUserName="HIRA-SVC-BISON"
             DTS:ProxyDomain="SYSTEM">
-            <DTS:Property
-              DTS:Name="ServerPassword"
-              Sensitive="1"></DTS:Property>
-            <DTS:Property
-              DTS:Name="ProxyPassword"
-              Sensitive="1"></DTS:Property>
+            <EncryptedData
+              Type="http://www.w3.org/2001/04/xmlenc#Element"
+              Salt="RQ4YP6HIyA=="
+              IV="oSFEr+fnEzo=" xmlns="http://www.w3.org/2001/04/xmlenc#">
+              <EncryptionMethod
+                Algorithm="http://www.w3.org/2001/04/xmlenc#tripledes-cbc" />
+              <CipherData>
+                <CipherValue>oSFEr+fnEzr83B8THEuBBgIjvVy/3v4w4xI3cem77cAgTRytapMN2/B5ufaQV7+RZYmfDtXdQrogcAlpCsolfAJZhLcTz3hZ8HOFnee71oJBe80qBjuOC8NksBT+Ni2rqyS/pPFgGpwuh+y8iMcziaNiuxfQLZx+mbCP4QXR0ak=</CipherValue>
+              </CipherData>
+            </EncryptedData>
+            <EncryptedData
+              Type="http://www.w3.org/2001/04/xmlenc#Element"
+              Salt="hy4hWAWzVA=="
+              IV="NJh3W7zb1v8=" xmlns="http://www.w3.org/2001/04/xmlenc#">
+              <EncryptionMethod
+                Algorithm="http://www.w3.org/2001/04/xmlenc#tripledes-cbc" />
+              <CipherData>
+                <CipherValue>NJh3W7zb1v8Aic7oH94a5IAHMNxWXXztqt0rRVaf6qKtM5tu+prPzMLprB3gO6wXLVERIdFvNQAQpp1uEbXXhVz8dYyTzkVK0A3F2tJI6mBsRMTgGZx7JD3PNgFddlYxPvnI08av/65427Z4k0VVb+CupMoVLFNCcXApDqD3+QM=</CipherValue>
+              </CipherData>
+            </EncryptedData>
           </DTS:HttpConnection>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
@@ -259,9 +273,16 @@
       DTS:Sensitive="True">
       <DTS:Property
         DTS:Name="ParameterValue">
-        <DTS:Property
-          DTS:DataType="0"
-          DTS:Name="ParameterValue"></DTS:Property>
+        <EncryptedData
+          IV="JNx0JxOExbU="
+          Salt="8wNbVOLIJw=="
+          Type="http://www.w3.org/2001/04/xmlenc#Element" xmlns="http://www.w3.org/2001/04/xmlenc#">
+          <EncryptionMethod
+            Algorithm="http://www.w3.org/2001/04/xmlenc#tripledes-cbc" />
+          <CipherData>
+            <CipherValue>JNx0JxOExbXnVmCFfSZV1PxeGXw8ghowMp3wZHwoTd/fs9SRGVJK8vdXQJGSzi8RixOZ9AHQ28OX5RpTgdABCP/bm98Y7mz0ywBqLe2pj8O6Qqqrmghw1XnspmjlfbGKEjo7Uop//5SwgdNu3Ko8hYYvSXAuS405bRiD9gvq/Cg=</CipherValue>
+          </CipherData>
+        </EncryptedData>
       </DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
@@ -727,7 +748,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Geldmarktsätze aus dem Internet laden"
           DTS:TaskContact="Execute Process Task;Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="4">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -751,7 +772,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Kurse vom EZB-Rechner herunterladen"
           DTS:TaskContact="Execute Process Task;Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="3">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -798,7 +819,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Verbraucherpreisindizes aus dem Internet laden"
           DTS:TaskContact="Execute Process Task;Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="3">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -823,7 +844,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="VPI Österreich herunterladen"
           DTS:TaskContact="Execute Process Task;Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="4">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -880,7 +901,13 @@
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
-          <DTS:ObjectData />
+          <DTS:ObjectData>
+            <ScriptProject
+              Name="ST_b0ae3df8c1bf473ea0466a22856b3e85"
+              VSTAMajorVersion="14"
+              VSTAMinorVersion="0"
+              Language="VisualBasic" />
+          </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
           DTS:refId="Package\Lock and wait\Set resetlock"
@@ -894,7 +921,13 @@
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
-          <DTS:ObjectData />
+          <DTS:ObjectData>
+            <ScriptProject
+              Name="ST_dbc7d0e340c0471e8de8c87422ea37ec"
+              VSTAMajorVersion="14"
+              VSTAMinorVersion="0"
+              Language="VisualBasic" />
+          </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
           DTS:refId="Package\Lock and wait\Set StagingDB locked"
@@ -956,7 +989,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Feld für Basisjahr in VPI anlegen"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="5">
+          DTS:ThreadHint="11">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -975,7 +1008,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Stagingbereich vorbereiten"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="6">
+          DTS:ThreadHint="13">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -993,7 +1026,7 @@
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Tabelle BE_IndiceSante anlegen"
-          DTS:ThreadHint="7">
+          DTS:ThreadHint="5">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -1011,7 +1044,7 @@
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Tabelle BE_IndiceSante leeren"
-          DTS:ThreadHint="7">
+          DTS:ThreadHint="5">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -1030,7 +1063,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Tabelle Geldmarktsätze anlegen"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="8">
+          DTS:ThreadHint="6">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -1049,7 +1082,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Tabelle Kurse anlegen"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="9">
+          DTS:ThreadHint="7">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -1068,7 +1101,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Tabelle LIBOR anlegen"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="10">
+          DTS:ThreadHint="8">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -1087,7 +1120,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Tabelle Verbraucherpreisindex anlegen"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="11">
+          DTS:ThreadHint="9">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -1106,7 +1139,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Tabelle VPI Österreich anlegen"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="12">
+          DTS:ThreadHint="10">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -1125,7 +1158,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Tabelle VPI-LangeReihen anlegen"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="5">
+          DTS:ThreadHint="11">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -1144,7 +1177,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Tabelle VPI-XML anlegen"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="13">
+          DTS:ThreadHint="12">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -1163,7 +1196,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Tabelle VPI-XML leeren"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="13">
+          DTS:ThreadHint="12">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -1242,7 +1275,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Ausgew VPIs im Indexstamm anlegen"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="6">
+          DTS:ThreadHint="5">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -1793,7 +1826,7 @@ order by 4"</DTS:PropertyExpression>
           DTS:LocaleID="-1"
           DTS:ObjectName="Geldmarktdaten in Indexstamm"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="5">
+          DTS:ThreadHint="8">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -1839,7 +1872,7 @@ order by 4
           DTS:LocaleID="-1"
           DTS:ObjectName="Geldmarktdaten in Indexvalue (Monatsdurchschnitt)"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="5">
+          DTS:ThreadHint="8">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -1878,7 +1911,7 @@ order by 4
           DTS:LocaleID="-1"
           DTS:ObjectName="Geldmarktdaten in Indexvalue (Tagessatz)"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="5">
+          DTS:ThreadHint="8">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -1918,7 +1951,7 @@ ORDER BY 4
           DTS:LocaleID="-1"
           DTS:ObjectName="Geldmartkdaten in DB transportieren"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="5">
+          DTS:ThreadHint="8">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -2003,7 +2036,7 @@ order by bbk_id')
           DTS:LocaleID="-1"
           DTS:ObjectName="Indexstamm für Liborreihen anlegen"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="6">
+          DTS:ThreadHint="5">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -2048,7 +2081,7 @@ order by 4
           DTS:LocaleID="-1"
           DTS:ObjectName="Indexwerte für Liborreihen übernehmen"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="6">
+          DTS:ThreadHint="5">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -2082,7 +2115,7 @@ WHERE xValue!='.' and try_convert(FLOAT,NULLIF(xValue,'.')) IS not NULL
           DTS:LocaleID="-1"
           DTS:ObjectName="Indexwerte zu ausgew VPIs in Indexvalue laden"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="6">
+          DTS:ThreadHint="5">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -2181,7 +2214,7 @@ ORDER BY 4
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Indice Sante in Indexstamm anlegen"
-          DTS:ThreadHint="6">
+          DTS:ThreadHint="5">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -2199,7 +2232,7 @@ ORDER BY 4
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Indice Sante in Indexvalue laden"
-          DTS:ThreadHint="6">
+          DTS:ThreadHint="5">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -2791,7 +2824,7 @@ ORDER BY 4
           DTS:LocaleID="-1"
           DTS:ObjectName="Kurse in BISINTDATA transformieren"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="5">
+          DTS:ThreadHint="8">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -2837,7 +2870,7 @@ WHERE xDate &gt;= CASE WHEN &amp;MM=-1 THEN CONVERT(datetime,'1999.01.01',102) E
           DTS:LocaleID="-1"
           DTS:ObjectName="Kurse in DB laden"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="5">
+          DTS:ThreadHint="8">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0" />
@@ -2898,7 +2931,7 @@ INSERT INTO.dbo.EZB_Kurse SELECT*FROM @KU
               DTS:LocaleID="-1"
               DTS:ObjectName="Indexstamm ergänzen VPI"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="8">
+              DTS:ThreadHint="7">
               <DTS:Variables />
               <DTS:LoggingOptions
                 DTS:FilterKind="0" />
@@ -6250,7 +6283,7 @@ AND BasisJahr.F1 is not null</property>
               DTS:ExecutableType="Microsoft.ExecuteSQLTask"
               DTS:LocaleID="-1"
               DTS:ObjectName="Process excel-file?"
-              DTS:ThreadHint="8">
+              DTS:ThreadHint="7">
               <DTS:Variables />
               <DTS:LoggingOptions
                 DTS:FilterKind="0" />
@@ -6269,7 +6302,7 @@ AND BasisJahr.F1 is not null</property>
               DTS:LocaleID="-1"
               DTS:ObjectName="VPI Daten ergänzen"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="8">
+              DTS:ThreadHint="7">
               <DTS:Variables />
               <DTS:LoggingOptions
                 DTS:FilterKind="0" />
@@ -6368,7 +6401,7 @@ SET NOCOUNT OFF
               DTS:ExecutableType="Microsoft.ExpressionTask"
               DTS:LocaleID="-1"
               DTS:ObjectName="create source adress"
-              DTS:ThreadHint="6">
+              DTS:ThreadHint="5">
               <DTS:Variables />
               <DTS:LoggingOptions
                 DTS:FilterKind="0" />
@@ -6385,7 +6418,7 @@ SET NOCOUNT OFF
               DTS:ExecutableType="Microsoft.ExecuteSQLTask"
               DTS:LocaleID="-1"
               DTS:ObjectName="fill index base data"
-              DTS:ThreadHint="6">
+              DTS:ThreadHint="5">
               <DTS:Variables />
               <DTS:LoggingOptions
                 DTS:FilterKind="0" />
@@ -6410,7 +6443,7 @@ SET NOCOUNT OFF
               DTS:ExecutableType="Microsoft.ExecuteSQLTask"
               DTS:LocaleID="-1"
               DTS:ObjectName="fill index values"
-              DTS:ThreadHint="7">
+              DTS:ThreadHint="6">
               <DTS:Variables />
               <DTS:LoggingOptions
                 DTS:FilterKind="0" />
@@ -6436,11 +6469,17 @@ SET NOCOUNT OFF
               DTS:ExecutableType="Microsoft.ScriptTask"
               DTS:LocaleID="-1"
               DTS:ObjectName="Skripttask"
-              DTS:ThreadHint="6">
+              DTS:ThreadHint="5">
               <DTS:Variables />
               <DTS:LoggingOptions
                 DTS:FilterKind="0" />
-              <DTS:ObjectData />
+              <DTS:ObjectData>
+                <ScriptProject
+                  Name="ST_64e6da2677264b11a40ed273b56b952b"
+                  VSTAMajorVersion="14"
+                  VSTAMinorVersion="0"
+                  Language="VisualBasic" />
+              </DTS:ObjectData>
             </DTS:Executable>
           </DTS:Executables>
           <DTS:PrecedenceConstraints>
@@ -6782,7 +6821,7 @@ SET NOCOUNT OFF
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="205.333333333334,118"
+          PanelSize="205.333333333334,118.666666666667"
           Size="205.333333333334,161.333333333334"
           Id="Package\Internet Connection?"
           TopLeft="290.341265316183,651.541181386796" />
@@ -7150,7 +7189,7 @@ SET NOCOUNT OFF
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="345.333333333334,350"
+          PanelSize="345.333333333334,350.666666666667"
           Size="345.333333333334,393.333333333334"
           Id="Package\SQL\Sequence Container"
           TopLeft="49,200" />
@@ -7265,7 +7304,7 @@ SET NOCOUNT OFF
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="362.666666666667,250"
+          PanelSize="362.666666666667,250.666666666667"
           Size="362.666666666667,293.333333333334"
           Id="Package\SQL\Sequenzcontainer"
           TopLeft="431.5,273.285714285714" />

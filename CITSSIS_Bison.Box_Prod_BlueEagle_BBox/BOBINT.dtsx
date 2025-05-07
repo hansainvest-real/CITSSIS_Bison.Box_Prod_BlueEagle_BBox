@@ -12,9 +12,9 @@
   DTS:LocaleID="1031"
   DTS:ObjectName="BOBINT"
   DTS:PackageType="5"
-  DTS:ProtectionLevel="0"
-  DTS:VersionBuild="219"
-  DTS:VersionGUID="{EC3D1A4F-B726-453B-956B-0F14E52A473F}">
+  DTS:ProtectionLevel="2"
+  DTS:VersionBuild="222"
+  DTS:VersionGUID="{D607774B-E5EA-4A7E-B03C-5033FCF97CA4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Configurations>
@@ -1953,7 +1953,7 @@ group by T02G.DDIM02GRP30, VM.FDIM03, VM.DPERIODID
               DTS:LocaleID="-1"
               DTS:ObjectName="type 1"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="1">
+              DTS:ThreadHint="0">
               <DTS:Variables />
               <DTS:LoggingOptions
                 DTS:FilterKind="0" />
@@ -2008,7 +2008,7 @@ EXEC (@SQL)"
               DTS:LocaleID="-1"
               DTS:ObjectName="type 2"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="0">
+              DTS:ThreadHint="1">
               <DTS:Variables />
               <DTS:LoggingOptions
                 DTS:FilterKind="0" />
@@ -9739,7 +9739,7 @@ execute dbo.BIS_IFInternSTAT @FPART        ='''STATP'''		,
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="226,346"
+          PanelSize="226,346.666666666667"
           Size="226,389.333333333334"
           Id="Package\deposits"
           TopLeft="1593.47319411233,103.661991578232" />

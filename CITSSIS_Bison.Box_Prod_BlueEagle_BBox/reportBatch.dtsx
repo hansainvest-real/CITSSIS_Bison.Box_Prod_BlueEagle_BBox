@@ -12,9 +12,9 @@
   DTS:LocaleID="1031"
   DTS:ObjectName="reportBatch"
   DTS:PackageType="5"
-  DTS:ProtectionLevel="0"
-  DTS:VersionBuild="63"
-  DTS:VersionGUID="{F387A7CB-6777-43C4-A3B4-A440224714EF}">
+  DTS:ProtectionLevel="2"
+  DTS:VersionBuild="64"
+  DTS:VersionGUID="{9A4FADAA-27D2-48BB-976D-D8B1D6EA125C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Configurations>

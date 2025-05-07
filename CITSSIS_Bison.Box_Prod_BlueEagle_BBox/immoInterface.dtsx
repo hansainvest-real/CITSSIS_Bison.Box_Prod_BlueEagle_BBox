@@ -12,9 +12,9 @@
   DTS:LocaleID="1031"
   DTS:ObjectName="immoInterface"
   DTS:PackageType="5"
-  DTS:ProtectionLevel="0"
-  DTS:VersionBuild="152"
-  DTS:VersionGUID="{3DEAD48E-A91C-4F37-82F8-16AC62DA3401}">
+  DTS:ProtectionLevel="2"
+  DTS:VersionBuild="153"
+  DTS:VersionGUID="{59BD3B57-B86E-4347-A4E7-0951F6D6FC39}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -807,7 +807,13 @@ exec dbo.BIS_GesbtlgPath_Period @Startdate, @EndDate, @SelfAlloc=1"</DTS:Propert
                   <DTS:Variables />
                   <DTS:LoggingOptions
                     DTS:FilterKind="0" />
-                  <DTS:ObjectData />
+                  <DTS:ObjectData>
+                    <ScriptProject
+                      Name="ST_28a609b270d1486aaf913a8bbf14e464"
+                      VSTAMajorVersion="14"
+                      VSTAMinorVersion="0"
+                      Language="VisualBasic" />
+                  </DTS:ObjectData>
                 </DTS:Executable>
                 <DTS:Executable
                   DTS:refId="Package\Immo interface\TIFALLOC\Foreach-ALLLOC Definition\Set SQL"
@@ -823,7 +829,13 @@ exec dbo.BIS_GesbtlgPath_Period @Startdate, @EndDate, @SelfAlloc=1"</DTS:Propert
                   <DTS:Variables />
                   <DTS:LoggingOptions
                     DTS:FilterKind="0" />
-                  <DTS:ObjectData />
+                  <DTS:ObjectData>
+                    <ScriptProject
+                      Name="ST_be0b88c80018458b9103875986eb2293"
+                      VSTAMajorVersion="14"
+                      VSTAMinorVersion="0"
+                      Language="VisualBasic" />
+                  </DTS:ObjectData>
                 </DTS:Executable>
               </DTS:Executables>
               <DTS:PrecedenceConstraints>
@@ -982,7 +994,7 @@ exec dbo.BIS_GesbtlgPath_Period @Startdate, @EndDate, @SelfAlloc=1"</DTS:Propert
                   DTS:LocaleID="-1"
                   DTS:ObjectName="insert TIFDIMID"
                   DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-                  DTS:ThreadHint="1">
+                  DTS:ThreadHint="0">
                   <DTS:Variables />
                   <DTS:LoggingOptions
                     DTS:FilterKind="0" />
@@ -1001,11 +1013,17 @@ exec dbo.BIS_GesbtlgPath_Period @Startdate, @EndDate, @SelfAlloc=1"</DTS:Propert
                   DTS:ExecutableType="Microsoft.ScriptTask"
                   DTS:LocaleID="-1"
                   DTS:ObjectName="print SQL"
-                  DTS:ThreadHint="1">
+                  DTS:ThreadHint="0">
                   <DTS:Variables />
                   <DTS:LoggingOptions
                     DTS:FilterKind="0" />
-                  <DTS:ObjectData />
+                  <DTS:ObjectData>
+                    <ScriptProject
+                      Name="ST_7b54087d3e894441b78d5d6cd7e30cb4"
+                      VSTAMajorVersion="14"
+                      VSTAMinorVersion="0"
+                      Language="VisualBasic" />
+                  </DTS:ObjectData>
                 </DTS:Executable>
                 <DTS:Executable
                   DTS:refId="Package\Immo interface\TIFDIMID\Foreach-DIMID Definition\Set SQL"
@@ -1017,11 +1035,17 @@ exec dbo.BIS_GesbtlgPath_Period @Startdate, @EndDate, @SelfAlloc=1"</DTS:Propert
                   DTS:ExecutableType="Microsoft.ScriptTask"
                   DTS:LocaleID="-1"
                   DTS:ObjectName="Set SQL"
-                  DTS:ThreadHint="0">
+                  DTS:ThreadHint="1">
                   <DTS:Variables />
                   <DTS:LoggingOptions
                     DTS:FilterKind="0" />
-                  <DTS:ObjectData />
+                  <DTS:ObjectData>
+                    <ScriptProject
+                      Name="ST_a98679b4d36b4c69a7f7207d6b2e0b88"
+                      VSTAMajorVersion="14"
+                      VSTAMinorVersion="0"
+                      Language="VisualBasic" />
+                  </DTS:ObjectData>
                 </DTS:Executable>
               </DTS:Executables>
               <DTS:PrecedenceConstraints>
@@ -1765,7 +1789,7 @@ where k1.ldelete = 0"
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="238,274"
+          PanelSize="238,274.666666666667"
           Size="238,317.333333333334"
           Id="Package\CUSTOM executions"
           TopLeft="389.874999301508,352.47303293352" />
@@ -1924,7 +1948,7 @@ where k1.ldelete = 0"
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="566,550"
+          PanelSize="566,550.666666666667"
           Size="566,593.333333333334"
           Id="Package\Immo interface"
           TopLeft="1065.14582251292,352.47303293352" />

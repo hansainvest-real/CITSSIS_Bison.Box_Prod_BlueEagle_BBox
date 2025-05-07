@@ -12,9 +12,9 @@
   DTS:LocaleID="1031"
   DTS:ObjectName="FIBU_KUM"
   DTS:PackageType="5"
-  DTS:ProtectionLevel="0"
-  DTS:VersionBuild="258"
-  DTS:VersionGUID="{018D3689-5ACD-4B7B-80A0-E688ED05A273}">
+  DTS:ProtectionLevel="2"
+  DTS:VersionBuild="259"
+  DTS:VersionGUID="{0B99D438-029B-4B59-9F93-CDFBDACEB958}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Configurations>
